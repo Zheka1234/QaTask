@@ -65,7 +65,8 @@ public class Calculator {
                     if (num2 != 0) {
                         result = num1 / num2;
                     } else {
-                        System.out.println("Error: Division by zero");
+                        System.out.println("Error: Division by zero!!!" +
+                                "If the user is already dividing by 0, then I don't want to work with a bad user and shut down");
                         return;
                     }
                     break;

@@ -1,0 +1,59 @@
+    1) User enters 5
+       User enters 6
+       User chooses +
+       Result 11
+    2) User enters -7
+       User enters 3
+       The user chooses
+       Result -10
+    3) User enters 2
+       User enters 2
+       User chooses *
+       Result 4
+    4) User enters 2
+       User enters 2
+       User selects /
+       Result 1
+    5) The user enters s
+       The user receives a notification about incorrect input and is asked to repeat the input.
+       User enters 6
+       User enters 4
+       User chooses +
+       Result 10
+    6) User enters 5
+       User enters 0
+       User selects /
+       The user receives a notification about incorrect input, the application closes
+    7) User enters 2
+       User enters f
+       The user receives a notification about incorrect input and is asked to repeat the input.
+       User enters 4
+       User chooses +
+       Result 6
+    8) User enters 2
+       User enters 7
+       User selects s
+       The user receives a notification about incorrect input and is asked to repeat the input.
+       The user enters +
+       Result 9
+    9) User enters 5
+       User enters 6
+       User chooses +*
+       Result 11
+       Bug (this input is invalid)
+    10) Fixed(9)
+        User enters 4
+        User enters 6
+        User chooses +*
+        The user receives a notification about incorrect input and is asked to repeat the input.
+        The user enters +
+        Result 10
+     11)User is asked y/n
+        User enters 2sds
+        The user receives a notification about incorrect input and is asked to repeat the input.
+        User enters n
+        The program ends
+
+
+
+

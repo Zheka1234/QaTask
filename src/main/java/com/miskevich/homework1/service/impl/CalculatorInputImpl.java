@@ -62,10 +62,10 @@ public class CalculatorInputImpl implements CalculatorInput {
                     }
                     break;
                 default:
-                    System.out.println("Ошибка: Неверный оператор.");
+                    System.out.println("Error: Invalid operator.");
                     return;
             }
-            System.out.print("Результат: ");
+            System.out.print("Result: ");
             System.out.printf(num1 + " " + operator + " " + num2 + " = " + result);
         } while (continueInput.askForContinue(reader));
     }

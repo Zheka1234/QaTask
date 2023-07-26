@@ -20,8 +20,8 @@ public class OperatorInputImpl implements OperationInput {
                     if (operator == '+' || operator == '-' || operator == '*' || operator == '/')
                         break;
                 }
-                throw new Exception();
-            } catch (Exception e) {
+                throw new IllegalArgumentException();
+            } catch (IllegalArgumentException e) {
                 System.out.println("Error: Invalid operator. Please try again.");
                 reader.nextLine();
             }

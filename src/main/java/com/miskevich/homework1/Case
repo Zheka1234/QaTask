@@ -60,7 +60,7 @@
        User is asked y/n
        User input 2sds
        The user receives a notification about incorrect input and is asked to repeat the input.
-       User enters n
+       User input n
        Expected result - The program ends
 
 

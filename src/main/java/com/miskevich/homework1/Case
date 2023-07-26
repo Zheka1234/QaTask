@@ -3,24 +3,28 @@
        User input 6
        User chooses +
        Expected result - 11
+       Test Result: Passed
 
     2) Summary - checking the subtraction of two numbers
        User input -7
        User input 3
        The user chooses
        Expected result - (-10)
+       Test Result: Passed
 
     3) Summary - checking the multiplication of two numbers
        User input 2
        User input 2
        User chooses *
        Expected result - 4
+       Test Result: Passed
 
     4) Summary - checking the division of two numbers
        User input 2
        User input 2
        User selects /
        Expected result - 1
+       Test Result: Passed
 
     5) Summary - check the input of letters in the first request instead of numbers
        The User input s
@@ -29,12 +33,14 @@
        User input 4
        User chooses +
        Expected result - 10
+       Test Result: Passed
 
     6) Summary - checking division by 0
        User input 5
        User input 0
        User selects /
        Expected result - User is notified of invalid input, divide by 0 , application closes
+       Test Result: Passed
 
     7) Summary - check the input of letters in the second query instead of numbers
        User input 2
@@ -43,6 +49,7 @@
        User input 4
        User chooses +
        Expected result - 6
+       Test Result: Passed
 
     8) Summary - checking for incorrect operator input
        User input 2
@@ -51,6 +58,7 @@
        The user receives a notification about incorrect input and is asked to repeat the input.
        User input +
        Expected result - 9
+       Test Result: Passed
 
     9) Summary - checking for choice on valid input continue or close the application after successful execution
        User input 3
@@ -62,6 +70,7 @@
        The user receives a notification about incorrect input and is asked to repeat the input.
        User input n
        Expected result - The program ends
+       Test Result: Passed
 
 
 

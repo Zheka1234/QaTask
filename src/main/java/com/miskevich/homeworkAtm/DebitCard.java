@@ -1,4 +1,4 @@
-package com.miskevich.homework2;
+package com.miskevich.homeworkAtm;
 
 class DebitCard extends Card {
     public DebitCard(String ownerName, double balance) {

@@ -1,4 +1,4 @@
-package com.miskevich.homework2;
+package com.miskevich.homeworkAtm;
 
 class Card {
     private String ownerName;

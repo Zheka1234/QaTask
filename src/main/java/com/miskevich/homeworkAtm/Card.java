@@ -1,38 +1,47 @@
 package com.miskevich.homeworkAtm;
 
-class Card {
+public class Card implements ICard {
     private String ownerName;
     private double balance;
-    private final String currency = "BYR";
     public Card(String ownerName, double balance) {
+        if (!isValidOwnerName(ownerName)) {
+            throw new IllegalArgumentException("Invalid owner name: " + ownerName);
+        }
         this.ownerName = ownerName;
         this.balance = balance;
     }
-    public Card(String ownerName) {
-        this.ownerName = ownerName;
-        this.balance = 0.0;
+    @Override
+    public String getOwnerName() {
+        return ownerName;
     }
+    @Override
     public double getBalance() {
         return balance;
     }
-    public String getCurrency() {
-        return currency;
-    }
+    @Override
     public void deposit(double amount) {
         balance += amount;
-        System.out.println("Баланс пополнен на " + amount + " " + currency);
     }
-    public void withdraw(double amount) {
-        balance -= amount;
-        System.out.println("Снято " + amount + " " + currency);
-    }
-    public void withdrawInUSD(double amount) {
-        double amountInBYR = amount * 3;
-        if(balance >= amountInBYR) {
-            balance -= amountInBYR;
-            System.out.println("Снято " + amount + " USD" );
+    @Override
+    public boolean withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            return true;
         } else {
-            System.out.println("Недостаточно средств на карте");
+            return false;
         }
+    }
+    @Override
+    public double convertBalance(double rate, String currency) {
+        if (currency.equals("USD")) {
+            return balance / rate;
+        } else if (currency.equals("EUR")) {
+            return balance / rate * 1.2;
+        } else {
+            throw new IllegalArgumentException("Invalid currency: " + currency);
+        }
+    }
+    private boolean isValidOwnerName(String name) {
+        return name.matches("[a-zA-Z]+");
     }
 }

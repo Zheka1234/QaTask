@@ -1,4 +1,4 @@
-package com.miskevich.homework2;
+package com.miskevich.homeworkAtm;
 
 class CreditCard extends Card {
     public CreditCard(String ownerName, double balance) {

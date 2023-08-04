@@ -18,11 +18,20 @@ public class CardFactoryImpl implements CardFactory {
         while (!isValidBalance) {
             try {
                 System.out.print("Введите начальный баланс (неотрицательное число): ");
-                balance = scanner.nextDouble();
-                isValidBalance = isValidBalance(balance);
+                if (scanner.hasNextDouble()) {
+                    balance = scanner.nextDouble();
+                    if (balance >= 0) {
+                        isValidBalance = true;
+                    } else {
+                        System.out.println("Ошибка: введен некорректный баланс. Пожалуйста, введите неотрицательное число.");
+                    }
+                } else {
+                    System.out.println("Ошибка: введен некорректный баланс. Пожалуйста, введите неотрицательное число.");
+                    scanner.next(); // очистка буфера ввода
+                }
             } catch (InputMismatchException e) {
-                System.out.println("Ошибка: введен некорректный баланс. Попробуйте снова.");
-                scanner.nextLine(); // очистка буфера ввода
+                System.out.println("Ошибка: введен некорректный баланс. Пожалуйста, введите неотрицательное число.");
+                scanner.next(); // очистка буфера ввода
             }
         }
         int cardType = 0;
@@ -30,26 +39,32 @@ public class CardFactoryImpl implements CardFactory {
         while (!isValidInput) {
             try {
                 System.out.print("Выберите тип карты (1 для кредитной карты, 2 для дебетовой карты): ");
-                cardType = scanner.nextInt();
-                isValidInput = true;
+                if (scanner.hasNextInt()) {
+                    cardType = scanner.nextInt();
+                    if (cardType == 1 || cardType == 2) {
+                        isValidInput = true;
+                    } else {
+                        System.out.println("Ошибка: введен некорректный тип карты. Пожалуйста, введите 1 или 2.");
+                    }
+                } else {
+                    System.out.println("Ошибка: введен некорректный тип карты. Пожалуйста, введите 1 или 2.");
+                    scanner.next(); // очистка буфера ввода
+                }
             } catch (InputMismatchException e) {
-                System.out.println("Ошибка: введен некорректный тип карты. Попробуйте снова.");
-                scanner.nextLine(); // очистка буфера ввода
+                System.out.println("Ошибка: введен некорректный тип карты. Пожалуйста, введите 1 или 2.");
+                scanner.next(); // очистка буфера ввода
             }
         }
         switch (cardType) {
             case 1:
                 return new CreditCard(ownerName, balance);
             case 2:
-                return new DebitCard(ownerName,balance);
+                return new DebitCard(ownerName, balance);
             default:
                 throw new IllegalArgumentException("Неверный тип карты");
         }
     }
     private boolean isValidOwnerName(String name) {
         return name.matches("[a-zA-Z]+");
-    }
-    private boolean isValidBalance(double balance) {
-        return balance >= 0;
     }
 }

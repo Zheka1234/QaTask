@@ -2,10 +2,10 @@ package com.miskevich.homeworkAtm;
 
 public class Card implements ICard {
     private String ownerName;
-    private double balance;
+    protected double balance;
     public Card(String ownerName, double balance) {
         if (!isValidOwnerName(ownerName)) {
-            throw new IllegalArgumentException("Invalid owner name: " + ownerName);
+            throw new IllegalArgumentException("Некорректное имя владельца: " + ownerName);
         }
         this.ownerName = ownerName;
         this.balance = balance;
@@ -38,7 +38,7 @@ public class Card implements ICard {
         } else if (currency.equals("EUR")) {
             return balance / rate * 1.2;
         } else {
-            throw new IllegalArgumentException("Invalid currency: " + currency);
+            throw new IllegalArgumentException("Некорректная валюта: " + currency);
         }
     }
     private boolean isValidOwnerName(String name) {

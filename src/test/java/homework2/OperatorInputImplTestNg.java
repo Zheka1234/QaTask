@@ -2,6 +2,7 @@ package homework2;
 
 import com.miskevich.homework1.service.impl.OperatorInputImpl;
 import org.testng.annotations.Test;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package homework2;
+package homework2.param;
 
 import com.miskevich.homework1.service.impl.OperatorInputImpl;
 import org.junit.jupiter.api.Assertions;

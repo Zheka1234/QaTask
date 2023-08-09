@@ -1,11 +1,14 @@
 package com.miskevich.homeworkAtm;
 
+import com.miskevich.homeworkAtm.exceptions.InsufficientFundsException;
+import com.miskevich.homeworkAtm.serviceatm.ICard;
 import com.miskevich.homeworkAtm.serviceatm.implatm.CardImpl;
 
 import java.util.Scanner;
 
 public class Atm {
-    private CardImpl card;
+
+    private ICard card;
 
     public Atm(CardImpl card) {
         this.card = card;
@@ -50,11 +53,18 @@ public class Atm {
                             if (withdrawAmountBYR < 0) throw new NumberFormatException();
                             break;
                         } catch (NumberFormatException e) {
-                            System.out.println("НInvalid input. Please enter a positive number.");
+                            System.out.println("Invalid input. Please enter a positive number.");
                         }
                     }
-                    if (!card.withdraw(withdrawAmountBYR)) {
-                        System.out.println("Insufficient funds");
+                    try {
+                        boolean success = card.withdraw(withdrawAmountBYR);
+                        if (success) {
+                            System.out.println("Withdrawal completed successfully");
+                        } else {
+                            System.out.println("Insufficient funds on the card");
+                        }
+                    } catch (InsufficientFundsException e) {
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case 3:
@@ -69,9 +79,16 @@ public class Atm {
                             System.out.println("Invalid input. Please enter a positive number.");
                         }
                     }
-                    double withdrawAmountBYRConverted = withdrawAmountUSD * 3;
-                    if (!card.withdraw(withdrawAmountBYRConverted)) {
-                        System.out.println("Insufficient funds");
+                    double withdrawAmountBYRConverted = card.convertCurrency(withdrawAmountUSD, 3);
+                    try {
+                        boolean success = card.withdraw(withdrawAmountBYRConverted);
+                        if (success) {
+                            System.out.println("Withdrawal completed successfully");
+                        } else {
+                            System.out.println("Insufficient funds on the card");
+                        }
+                    } catch (InsufficientFundsException e) {
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case 4:

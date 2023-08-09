@@ -1,5 +1,6 @@
 package com.miskevich.homeworkAtm;
 
+import com.miskevich.homeworkAtm.exceptions.InsufficientFundsException;
 import com.miskevich.homeworkAtm.serviceatm.implatm.CardImpl;
 
 public class DebitCard extends CardImpl {
@@ -8,12 +9,12 @@ public class DebitCard extends CardImpl {
     }
 
     @Override
-    public boolean withdraw(double amount) {
+    public boolean withdraw(double amount) throws InsufficientFundsException {
         if (amount <= balance) {
             balance -= amount;
             return true;
         } else {
-            return false;
+            throw new InsufficientFundsException("Insufficient funds in the card");
         }
     }
 }

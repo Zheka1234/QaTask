@@ -9,7 +9,8 @@ public interface ICard {
 
     boolean withdraw(double amount);
 
-    double convertBalance(double rate, String currency);
 
     void increaseDebt(double amount);
+
+    double convertCurrency(double amount, double exchangeRate);
 }

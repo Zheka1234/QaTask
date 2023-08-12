@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite utilities" verbose="1" configfailurepolicy="continue">
+    <listeners>
+        <listener class-name="homework3.listener.MyListenerTestNgTest"></listener>
+    </listeners>
+    <test name="test for all">
+        <classes>
+            <class name="homework3.utilities.ArrayListTest"/>
+            <class name="homework3.utilities.DLLNodeTest"/>
+            <class name="homework3.utilities.DLLTest"/>
+            <class name="homework3.utilities.QueueTest"/>
+            <class name="homework3.utilities.StackTest"/>
+        </classes>
+    </test>
+</suite>

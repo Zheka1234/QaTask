@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<carshop>
+    <car>
+        <make>Toyota</make>
+        <model>Camry</model>
+    </car>
+</carshop>

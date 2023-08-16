@@ -42,6 +42,42 @@ public class CalculatorInputImplTest {
     }
 
     @Test
+    @DisplayName("multiplication check of 2 long numbers")
+    public void testMultiplicationWithLongNumbers() {
+        String input = "100000000000\n200000000000\n*\nn\n";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        calculatorInput.start();
+    }
+
+    @Test
+    @DisplayName("addition check with strings")
+    public void testAdditionWithStrings() {
+        String input = "Hello\n3\nWorld\n5\n+\nn\n";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        calculatorInput.start();
+    }
+
+    @Test
+    @DisplayName("check division of 2 floating-point numbers")
+    public void testDivisionWithFloatingPointNumbers() {
+        String input = "3,5\n2,1\n/\nn\n";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        calculatorInput.start();
+    }
+
+    @Test
+    @DisplayName("subtraction check with negative numbers")
+    public void testSubtractionWithNegativeNumbers() {
+        String input = "-10\n-5\n-\nn\n";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        calculatorInput.start();
+    }
+
+    @Test
     @DisplayName("subtraction check 2 numeral")
     public void testSubtraction() {
         String input = "10\n2\n-\nn\n";
@@ -50,6 +86,7 @@ public class CalculatorInputImplTest {
         calculatorInput.start();
 
     }
+
 
     @Test
     @DisplayName("multiplication check of 2 numeral")
@@ -111,43 +148,20 @@ public class CalculatorInputImplTest {
 
     }
 
+
     @Test
-    @DisplayName("checking input is not correct input continue work")
-    public void testInvalidContinueInput() {
+    public void testInvalidContinueInput1() {
         String input = "5\n3\n+\nz\nn";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
-    }
 
-//  пример теста Assertions он жалуется, что передается не то, что в актуал
-// org.opentest4j.AssertionFailedError:
-//<Click to see difference> я тут сделал одинаковое,что передается и что ожидает одинаково,всеравно ошибка
-//
-//
-//	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-//	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-//	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-//	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
-//	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
-//	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1141)
-//	at homework2.test.CalculatorInputImplTest.testInvalidContinueInput1(CalculatorInputImplTest.java:124)
-//	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-//	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-//	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-//    @Test
-//    public void testInvalidContinueInput1() {
-//        String input = "5\n3\n+\nz\nn";
-//        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
-//        System.setIn(inputStream);
-//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//        System.setOut(new PrintStream(outputStream));
-//        calculatorInput.start();
-//
-//        String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /): Result: 5.0 + 3.0 = 8.0\n" +
-//                "Do you want to continue? (y/n): Error: Invalid input. Type 'y' to continue or 'n' to end: \n\nDo you want to continue? (y/n):";
-//        String actualOutput = outputStream.toString().trim();
-//        Assertions.assertEquals(expectedOutput, actualOutput);
-//    }
+        String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /): Result: 5.0 + 3.0 = 8.0\n" +
+                "Do you want to continue? (y/n): Error: Invalid input. Type 'y' to continue or 'n' to end: \r\n\nDo you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        Assertions.assertEquals(expectedOutput, actualOutput);
+    }
 
 }

@@ -29,7 +29,7 @@ public class ContinueInputImplTestNg {
         reader.close();
     }
 
-    @DataProvider(name = "continueInputs")
+    @DataProvider(name = "continueInputs", parallel = true)
     public Object[][] continueInputs() {
         return new Object[][]{
                 {"y", true},
@@ -38,9 +38,10 @@ public class ContinueInputImplTestNg {
         };
     }
 
-    @Test(dataProvider = "continueInputs", groups = "calculator")
-    public void testAskForContinue(String input, boolean expected) {
+    @Test(dataProvider = "continueInputs", groups = "calculator", priority = 3)
+    public void testAskForContinue(String input, boolean expected) throws InterruptedException {
 
+        Thread.sleep(200);
         reader = new Scanner(new ByteArrayInputStream(input.getBytes()));
 
         boolean result = continueInput.askForContinue(reader);

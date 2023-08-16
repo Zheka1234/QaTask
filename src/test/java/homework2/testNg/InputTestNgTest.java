@@ -26,7 +26,7 @@ public class InputTestNgTest {
         numberInput = null;
     }
 
-    @DataProvider(name = "validInputData")
+    @DataProvider(name = "validInputData", parallel = true)
     public Object[][] validInputData() {
         return new Object[][]{
                 {"5,7\n2,3", 5.7, 2.3},
@@ -35,7 +35,7 @@ public class InputTestNgTest {
         };
     }
 
-    @DataProvider(name = "invalidInputData")
+    @DataProvider(name = "invalidInputData", parallel = true)
     public Object[][] invalidInputData() {
         return new Object[][]{
                 {"abc\n1\nabc\n5", 1, 5},
@@ -44,8 +44,9 @@ public class InputTestNgTest {
         };
     }
 
-    @Test(dataProvider = "validInputData", groups = "calculator")
-    public void testGetNumberInput_ValidInput(String input, double expected1, double expected2) {
+    @Test(dataProvider = "validInputData", groups = "calculator", retryAnalyzer = RetryAnalyzer.class, priority = 1)
+    public void testGetNumberInput_ValidInput(String input, double expected1, double expected2) throws InterruptedException {
+        Thread.sleep(100);
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         Scanner reader = new Scanner(System.in);
@@ -55,8 +56,9 @@ public class InputTestNgTest {
         Assert.assertEquals(result2, expected2);
     }
 
-    @Test(dataProvider = "invalidInputData", groups = "calculator")
-    public void testGetNumberInput_InvalidInput(String input, double expected1, double expected2) {
+    @Test(dataProvider = "invalidInputData", groups = "calculator", retryAnalyzer = RetryAnalyzer.class, priority = 5)
+    public void testGetNumberInput_InvalidInput(String input, double expected1, double expected2) throws InterruptedException {
+        Thread.sleep(200);
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         Scanner reader = new Scanner(System.in);

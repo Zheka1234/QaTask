@@ -3,6 +3,7 @@
 <suite name="Calculator Suite" verbose="1" configfailurepolicy="continue">
     <listeners>
         <listener class-name="homework2.testNg.MyListenerCalculatorTestNg"></listener>
+        <listener class-name="homework2.testNg.RetryAnalyzer"></listener>
     </listeners>
     <test name="test for сфдсгдфещк">
         <groups>

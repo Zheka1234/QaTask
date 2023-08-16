@@ -1,11 +1,15 @@
 package homework2.param;
 
 import com.miskevich.homework1.service.impl.NumberInputImpl;
+import homework2.MyListener;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import java.util.InputMismatchException;
+
 import java.util.Scanner;
+
+@ExtendWith({MyListener.class})
 public class ParamNumberInputTest {
 
     @ParameterizedTest

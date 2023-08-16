@@ -31,7 +31,7 @@ public class OperatorInputImplTestNg {
         System.setIn(System.in);
     }
 
-    @DataProvider(name = "validInputs")
+    @DataProvider(name = "validInputs", parallel = true)
     public Object[][] validInputs() {
         return new Object[][]{
                 {"+", '+'},
@@ -41,9 +41,10 @@ public class OperatorInputImplTestNg {
         };
     }
 
-    @Test(dataProvider = "validInputs", groups = "calculator")
-    public void testGetOperatorInput_ValidInput_ReturnsOperator(String input, char expected) {
-        // Arrange
+    @Test(dataProvider = "validInputs", groups = "calculator", retryAnalyzer = RetryAnalyzer.class, priority = 7)
+    public void testGetOperatorInput_ValidInput_ReturnsOperator(String input, char expected) throws InterruptedException {
+
+        Thread.sleep(1000);
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         reader = new Scanner(System.in);

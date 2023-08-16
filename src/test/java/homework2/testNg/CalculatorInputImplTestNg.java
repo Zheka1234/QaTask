@@ -28,7 +28,7 @@ public class CalculatorInputImplTestNg {
         calculatorInput = new CalculatorInputImpl(numberInput, operatorInput, continueInput);
     }
 
-    @DataProvider(name = "calculationData")
+    @DataProvider(name = "calculationData", parallel = true)
     public Object[][] getCalculationData() {
         return new Object[][]{
                 {"5\n3\n+\nn\n"},
@@ -39,11 +39,13 @@ public class CalculatorInputImplTestNg {
         };
     }
 
-    @Test(dataProvider = "calculationData", groups = "calculator")
-    public void testStart(String input) {
+    @Test(dataProvider = "calculationData", groups = "calculator", priority = 2)
+    public void testStart(String input) throws InterruptedException {
+        Thread.sleep(1000);
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         calculatorInput.start();
+
 
     }
 

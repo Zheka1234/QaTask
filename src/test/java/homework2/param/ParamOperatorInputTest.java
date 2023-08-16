@@ -1,8 +1,10 @@
 package homework2.param;
 
 import com.miskevich.homework1.service.impl.OperatorInputImpl;
+import homework2.MyListener;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -10,7 +12,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-
+@ExtendWith({MyListener.class})
 public class ParamOperatorInputTest {
     private OperatorInputImpl operatorInput = new OperatorInputImpl();
 

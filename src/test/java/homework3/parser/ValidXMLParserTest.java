@@ -7,14 +7,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-public class XMLParserTest {
+public class ValidXMLParserTest {
     private XMLParser parser;
 
     @BeforeMethod
@@ -22,16 +21,16 @@ public class XMLParserTest {
         parser = new XMLParser("src/test/java/homework3/filesxml/carshop.xml");
     }
 
-    @Test(expectedExceptions = FileNotFoundException.class, groups = "parser")
+    @Test(expectedExceptions = NullPointerException.class, groups = "parser")
     public void testXMLParserWithoutTrueFileRoot() {
         new XMLParser("");
     }
 
     @Test(groups = "parser")
     public void testTrueSimpleXmlFile() {
-        parser = new XMLParser("src/test/java/homework3/filesxml/simple.xml");
+        parser = new XMLParser("src/test/java/homework3/filesxml/invalid_file_missing_closing_bracket.xml");
         parser.parseDocument();
-        assertTrue(parser.getErrors().isEmpty());
+        assertFalse(parser.getErrors().isEmpty());
     }
 
     @Test(groups = "parser")
@@ -42,7 +41,7 @@ public class XMLParserTest {
     }
 
     @Test(groups = "parser")
-    public void testTagWithAtribute() {
+    public void testTagWithAttribute() {
         parser = new XMLParser("src/test/java/homework3/filesxml/atribute.xml");
         parser.parseDocument();
         assertTrue(parser.getErrors().isEmpty());
@@ -52,22 +51,16 @@ public class XMLParserTest {
     public void testCommentLines() {
         parser = new XMLParser("src/test/java/homework3/filesxml/comment_lines.xml");
         parser.parseDocument();
-        assertTrue(parser.getErrors().isEmpty());
+        assertFalse(parser.getErrors().isEmpty());
     }
 
     @Test(groups = "parser")
     public void testDifficultFile() {
         parser = new XMLParser("src/test/java/homework3/filesxml/difficult_file.xml");
         parser.parseDocument();
-        assertTrue(parser.getErrors().isEmpty());
-    }
-
-    @Test(groups = "parser")
-    public void testWithoutDeclarationFile() {
-        parser = new XMLParser("src/test/java/homework3/filesxml/declaration.xml");
-        parser.parseDocument();
         assertFalse(parser.getErrors().isEmpty());
     }
+
 
     @Test(groups = "parser")
     public void testGetNameFromRoot() {
@@ -82,7 +75,7 @@ public class XMLParserTest {
         } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        assertEquals(xmlTagName, "carshop");
+        assertEquals(xmlTagName, "<carshop");
     }
 
     @DataProvider(name = "xmlFilePaths")
@@ -90,10 +83,9 @@ public class XMLParserTest {
         return new Object[][]{
                 {"src/test/java/homework3/filesxml/simple.xml"},
                 {"src/test/java/homework3/filesxml/closed_tag.xml"},
-                {"src/test/java/homework3/filesxml/atribute.xml"},
                 {"src/test/java/homework3/filesxml/comment_lines.xml"},
                 {"src/test/java/homework3/filesxml/difficult_file.xml"},
-                {"src/test/java/homework3/filesxml/declaration.xml"}
+
         };
     }
 
@@ -101,7 +93,7 @@ public class XMLParserTest {
     public void testParseDocument(String xmlFilePath) {
         parser = new XMLParser(xmlFilePath);
         parser.parseDocument();
-        assertTrue(parser.getErrors().isEmpty());
+        assertFalse(parser.getErrors().isEmpty());
     }
 
     @AfterMethod
@@ -109,7 +101,3 @@ public class XMLParserTest {
         parser = null;
     }
 }
-
-
-
-

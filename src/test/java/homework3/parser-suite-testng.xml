@@ -12,7 +12,8 @@
         </groups>
         <classes>
             <class name="homework3.parser.XMLTagTest"/>
-            <class name="homework3.parser.XMLParserTest"/>
+            <class name="homework3.parser.ValidXMLParserTest"/>
+            <class name="homework3.parser.InvalidXmlParserTest"/>
         </classes>
     </test>
 </suite>

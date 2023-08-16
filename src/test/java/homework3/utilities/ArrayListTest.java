@@ -95,7 +95,7 @@ public class ArrayListTest {
         list.add("Third");
         list.add(0, "First");
 
-        assertEquals(list.get(0), "first");
+        assertEquals(list.get(0), "First");
     }
 
     @Test

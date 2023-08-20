@@ -8,7 +8,6 @@ import com.miskevich.homework1.service.impl.ContinueInputImpl;
 import com.miskevich.homework1.service.impl.NumberInputImpl;
 import com.miskevich.homework1.service.impl.OperatorInputImpl;
 import homework2.MyListener;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,6 +17,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+
+import static org.testng.Assert.assertEquals;
 
 @ExtendWith({MyListener.class})
 public class CalculatorInputImplTest {
@@ -37,7 +38,14 @@ public class CalculatorInputImplTest {
         String input = "5\n3\n+\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /): Result: 5.0 + 3.0 = 8.0\n" +
+                "Do you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
 
     }
 
@@ -47,7 +55,14 @@ public class CalculatorInputImplTest {
         String input = "100000000000\n200000000000\n*\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /): Result: 1.0E11 * 2.0E11 = 2.0E22\n" +
+                "Do you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
     }
 
     @Test
@@ -56,7 +71,16 @@ public class CalculatorInputImplTest {
         String input = "Hello\n3\nWorld\n5\n+\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Error: Invalid input. Please try again.\r\n" +
+                "Enter first number: Enter second number: Error: Invalid input. Please try again.\r\n" +
+                "Enter second number: Choose an operator (+, -, *, /): Result: 3.0 + 5.0 = 8.0\n" +
+                "Do you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
     }
 
     @Test
@@ -65,7 +89,14 @@ public class CalculatorInputImplTest {
         String input = "3,5\n2,1\n/\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /): Result: 3.5 / 2.1 = 1.6666666666666665\n" +
+                "Do you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
     }
 
     @Test
@@ -74,7 +105,14 @@ public class CalculatorInputImplTest {
         String input = "-10\n-5\n-\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /): Result: -10.0 - -5.0 = -5.0\n" +
+                "Do you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
     }
 
     @Test
@@ -83,7 +121,14 @@ public class CalculatorInputImplTest {
         String input = "10\n2\n-\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /): Result: 10.0 - 2.0 = 8.0\n" +
+                "Do you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
 
     }
 
@@ -94,7 +139,14 @@ public class CalculatorInputImplTest {
         String input = "4\n5\n*\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /): Result: 4.0 * 5.0 = 20.0\n" +
+                "Do you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
 
     }
 
@@ -104,7 +156,14 @@ public class CalculatorInputImplTest {
         String input = "10\n2\n/\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /): Result: 10.0 / 2.0 = 5.0\n" +
+                "Do you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
 
     }
 
@@ -114,7 +173,15 @@ public class CalculatorInputImplTest {
         String input = "10\n0\n/\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /):" +
+                " Error: Division by zero!!! If the user is already dividing by 0," +
+                " then I don't want to work with a bad user and terminate the program";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
 
     }
 
@@ -124,7 +191,15 @@ public class CalculatorInputImplTest {
         String input = "5\n3\n&\n+\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /): Error: Invalid operator. Please try again.\r\n" +
+                "Choose an operator (+, -, *, /): Result: 5.0 + 3.0 = 8.0\n" +
+                "Do you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
 
     }
 
@@ -134,7 +209,15 @@ public class CalculatorInputImplTest {
         String input = "a\n3\n5\n+\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Error: Invalid input. Please try again.\r\n" +
+                "Enter first number: Enter second number: Choose an operator (+, -, *, /): Result: 3.0 + 5.0 = 8.0\n" +
+                "Do you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
 
     }
 
@@ -144,7 +227,15 @@ public class CalculatorInputImplTest {
         String input = "5\na\n3\n+\nn\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
         calculatorInput.start();
+
+        String expectedOutput = "Enter first number: Enter second number: Error: Invalid input. Please try again.\r\n" +
+                "Enter second number: Choose an operator (+, -, *, /): Result: 5.0 + 3.0 = 8.0\n" +
+                "Do you want to continue? (y/n):";
+        String actualOutput = outputStream.toString().trim();
+        assertEquals(expectedOutput, actualOutput);
 
     }
 
@@ -161,7 +252,7 @@ public class CalculatorInputImplTest {
         String expectedOutput = "Enter first number: Enter second number: Choose an operator (+, -, *, /): Result: 5.0 + 3.0 = 8.0\n" +
                 "Do you want to continue? (y/n): Error: Invalid input. Type 'y' to continue or 'n' to end: \r\n\nDo you want to continue? (y/n):";
         String actualOutput = outputStream.toString().trim();
-        Assertions.assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, actualOutput);
     }
 
 }

@@ -44,16 +44,15 @@ public class XMLTagTest {
 
     @Test(groups = "parser")
     public void testGetEmptyArrayListAsProperties() {
-        XMLTag tag = new XMLTag("Tag");
-        ListADT<XMLTag.TagProperty> properties = tag.getProperties();
+        ListADT<XMLTag.TagProperty> properties = xmlTag.getProperties();
         assertTrue(properties.isEmpty());
     }
 
     @Test(groups = "parser", dataProvider = "tagPropertiesList")
     public void testSetAndGetProperties(ListADT<XMLTag.TagProperty> propertyListADT) {
-        XMLTag tag = new XMLTag("Tag");
-        tag.setProperties(propertyListADT);
-        assertEquals(tag.getProperties(), propertyListADT);
+
+        xmlTag.setProperties(propertyListADT);
+        assertEquals(xmlTag.getProperties(), propertyListADT);
     }
 
     @Test(groups = "parser")
@@ -76,9 +75,8 @@ public class XMLTagTest {
 
     @Test(groups = "parser")
     public void testSetText() {
-        XMLTag tag = new XMLTag("Tag");
-        tag.setText("Text");
-        assertEquals(tag.getText(), "Text");
+        xmlTag.setText("Text");
+        assertEquals(xmlTag.getText(), "Text");
     }
 
     @DataProvider(name = "tagNames")

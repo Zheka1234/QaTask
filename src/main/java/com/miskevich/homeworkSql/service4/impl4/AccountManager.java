@@ -92,9 +92,13 @@ public class AccountManager implements Account {
         while (true) {
             try {
                 amount = scanner.nextDouble();
+                String[] amountParts = String.valueOf(amount).split("\\.");
+                if (amountParts.length > 1 && amountParts[1].length() > 3) {
+                    throw new InputMismatchException();
+                }
                 break;
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number:");
+                System.out.println("Invalid input. Please enter a number with at most 3 decimal places:");
                 scanner.nextLine();
             }
         }

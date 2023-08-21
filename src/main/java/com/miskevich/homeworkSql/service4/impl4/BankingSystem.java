@@ -90,6 +90,11 @@ public class BankingSystem implements Database {
                 insertStatement.setDouble(2, initialBalance);
                 insertStatement.setString(3, currency);
                 insertStatement.executeUpdate();
+
+                System.out.println("Account created successfully!");
+                System.out.println("User ID: " + userId);
+                System.out.println("Initial balance: " + initialBalance);
+                System.out.println("Currency: " + currency);
             }
         } catch (SQLException e) {
             e.printStackTrace();

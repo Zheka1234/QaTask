@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Calculator Suite" verbose="1" configfailurepolicy="continue">
+    <listeners>
+        <listener class-name="homework2.testNg.MyListenerCalculatorTestNg"></listener>
+        <listener class-name="homework2.testNg.RetryAnalyzer"></listener>
+    </listeners>
+    <test name="test for сфдсгдфещк">
+        <groups>
+            <run>
+                <include name="calculator"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="homework2.testNg.CalculatorInputImplTestNg"/>
+            <class name="homework2.testNg.ContinueInputImplTestNg"/>
+            <class name="homework2.testNg.InputTestNgTest"/>
+            <class name="homework2.testNg.OperatorInputImplTestNg"/>
+        </classes>
+    </test>
+</suite>

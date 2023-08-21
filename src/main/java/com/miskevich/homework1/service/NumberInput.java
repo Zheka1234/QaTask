@@ -5,4 +5,6 @@ import java.util.Scanner;
 public interface NumberInput {
 
     double getNumberInput(Scanner reader, String message);
+
+
 }

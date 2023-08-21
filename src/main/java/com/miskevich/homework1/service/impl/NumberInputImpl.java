@@ -22,6 +22,8 @@ public class NumberInputImpl implements NumberInput {
             }
         }
         return number;
-    };
+    }
+
+
 
 }

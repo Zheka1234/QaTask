@@ -21,5 +21,7 @@ public interface Database {
 
     void deleteAccount(int accountId);
 
+    boolean isAccountExists(int accountId);
+
 
 }

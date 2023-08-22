@@ -62,17 +62,21 @@ public class AccountManager implements Account {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter user ID:");
-        int userId;
+        int userId = 0;
         while (true) {
             try {
                 userId = scanner.nextInt();
+                if (!database.checkActiveAccounts(userId)) {
+                    System.out.println("The user has no active accounts." +
+                            " Please enter an existing user ID with active accounts:");
+                    continue;
+                }
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter an integer:");
                 scanner.nextLine();
             }
         }
-
         showUserAccounts(userId);
 
         System.out.println("Enter account ID:");
@@ -80,9 +84,13 @@ public class AccountManager implements Account {
         while (true) {
             try {
                 accountId = scanner.nextInt();
+                if (!database.isAccountExists(accountId)) {
+                    System.out.println("The account does not exist. Please enter an existing account ID:");
+                    continue;
+                }
                 break;
             } catch (InputMismatchException e) {
-                System.out.println(" input. Please enter an integer:");
+                System.out.println("Invalid input. Please enter an integer:");
                 scanner.nextLine();
             }
         }
@@ -98,7 +106,7 @@ public class AccountManager implements Account {
                 }
                 break;
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number with at most 3 decimal places:");
+                System.out.println("Invalid input. Please enter a number with no more than 3 decimal places:");
                 scanner.nextLine();
             }
         }
@@ -111,17 +119,21 @@ public class AccountManager implements Account {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter user ID:");
-        int userId;
+        int userId = 0;
         while (true) {
             try {
                 userId = scanner.nextInt();
+                if (!database.checkActiveAccounts(userId)) {
+                    System.out.println("The user has no active accounts." +
+                            " Please enter an existing user ID with active accounts:");
+                    continue;
+                }
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter an integer:");
                 scanner.nextLine();
             }
         }
-
         showUserAccounts(userId);
 
         System.out.println("Enter account ID:");
@@ -129,6 +141,10 @@ public class AccountManager implements Account {
         while (true) {
             try {
                 accountId = scanner.nextInt();
+                if (!database.isAccountExists(accountId)) {
+                    System.out.println("The account does not exist. Please enter an existing account ID:");
+                    continue;
+                }
                 break;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter an integer:");
@@ -141,9 +157,13 @@ public class AccountManager implements Account {
         while (true) {
             try {
                 amount = scanner.nextDouble();
+                String[] amountParts = String.valueOf(amount).split("\\.");
+                if (amountParts.length > 1 && amountParts[1].length() > 3) {
+                    throw new InputMismatchException();
+                }
                 break;
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number:");
+                System.out.println("Invalid input. Please enter a number with no more than 3 decimal places:");
                 scanner.nextLine();
             }
         }

@@ -104,6 +104,11 @@ public class BankingSystem implements Database {
     @Override
     public void deposit(int accountId, double amount) {
         try {
+            if (!isAccountExists(accountId)) {
+                System.out.println("The account does not exist. Please enter an existing account ID.");
+                return;
+            }
+
             PreparedStatement checkAccountStatement = connection.prepareStatement("SELECT * FROM accounts WHERE id = ?");
             checkAccountStatement.setInt(1, accountId);
             ResultSet accountResultSet = checkAccountStatement.executeQuery();
@@ -131,7 +136,7 @@ public class BankingSystem implements Database {
                         while (!validAmount) {
                             try {
                                 Scanner scanner = new Scanner(System.in);
-                                System.out.println("The transaction size cannot exceed 100'000'000. Please enter the deposit amount:");
+                                System.out.println("The transaction size cannot exceed 100,000,000. Please enter the deposit amount:");
                                 amount = scanner.nextDouble();
                                 validAmount = true;
                             } catch (InputMismatchException e) {
@@ -141,7 +146,7 @@ public class BankingSystem implements Database {
                         deposit(accountId, amount);
                     }
                 } else {
-                    System.out.println("Invalid user ID. Want to create a new user? Yes/No");
+                    System.out.println("Invalid user ID. Want to create a new user? yes/no");
 
                     Scanner scanner = new Scanner(System.in);
                     String choice = scanner.nextLine();
@@ -149,20 +154,20 @@ public class BankingSystem implements Database {
                     if (choice.equalsIgnoreCase("Yes")) {
                         System.out.println("Enter a new username:");
                         String name = scanner.nextLine();
-                        System.out.println("Enter the address of the new user:");
+                        System.out.println("Enter new user address");
                         String address = scanner.nextLine();
                         registerUser(name, address);
                         deposit(accountId, amount);
                     }
                 }
             } else {
-                System.out.println("Invalid account ID. Want to create a new account with a different currency? Yes/No");
+                System.out.println("Invalid account ID. Want to create a new account with a different currency? Yes/no");
 
                 Scanner scanner = new Scanner(System.in);
                 String choice = scanner.nextLine();
 
                 if (choice.equalsIgnoreCase("Yes")) {
-                    System.out.println("Enter user ID:");
+                    System.out.println("Enter ID user:");
                     int userId = scanner.nextInt();
                     System.out.println("Enter opening balance:");
                     double initialBalance = scanner.nextDouble();
@@ -318,6 +323,23 @@ public class BankingSystem implements Database {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public boolean isAccountExists(int accountId) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM accounts WHERE id = ?");
+            statement.setInt(1, accountId);
+            ResultSet resultSet = statement.executeQuery();
+
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
 
 
 }

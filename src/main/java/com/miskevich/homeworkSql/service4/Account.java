@@ -12,5 +12,9 @@ public interface Account {
 
     void showUserAccounts(int userId);
 
+    void addAccountFromInput();
+
+    void addAccountToExistingUser();
+
 
 }

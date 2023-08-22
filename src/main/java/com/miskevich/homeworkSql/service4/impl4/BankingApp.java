@@ -19,7 +19,8 @@ public class BankingApp implements BankingAppInterface {
             System.out.println("2. Deposit account");
             System.out.println("3. Withdraw with account");
             System.out.println("4. Delete account");
-            System.out.println("5. End the program");
+            System.out.println("5. Add account to existing user");
+            System.out.println("6. End the program");
 
             int choice = scanner.nextInt();
 
@@ -37,6 +38,9 @@ public class BankingApp implements BankingAppInterface {
                     accountManager.deleteAccountFromInput();
                     break;
                 case 5:
+                    accountManager.addAccountToExistingUser();
+                    break;
+                case 6:
                     exit = true;
                     break;
                 default:

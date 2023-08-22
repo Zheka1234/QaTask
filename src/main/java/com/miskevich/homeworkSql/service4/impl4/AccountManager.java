@@ -208,4 +208,38 @@ public class AccountManager implements Account {
     public void showUserAccounts(int userId) {
         database.getUserAccounts(userId);
     }
+
+    @Override
+    public void addAccountFromInput() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter user ID:");
+        int userId = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter opening balance:");
+        double initialBalance = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.println("Enter account currency:");
+        String currency = scanner.nextLine();
+
+        database.addAccount(userId, initialBalance, currency);
+    }
+
+    @Override
+    public void addAccountToExistingUser() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter an existing user ID:");
+        int userId = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Do you want to add a new account for this user? (Yes/no)");
+        String answer = scanner.nextLine();
+
+        if (answer.equalsIgnoreCase("Yes")) {
+            addAccountFromInput();
+        }
+    }
 }

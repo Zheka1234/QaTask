@@ -2,6 +2,7 @@ package home5.homrwork5.page;
 
 
 import home5.enums.TopMenuItem;
+import home5.homrwork5.DriverConnector;
 import home5.homrwork5.enums.TopMenuItem1;
 import home5.util.Browser;
 import org.openqa.selenium.WebElement;
@@ -16,7 +17,7 @@ public class ElectronicsPage extends BasePages {
 
 
     public ElectronicsPage() {
-        PageFactory.initElements(Browser.getDriver(), this);
+        PageFactory.initElements(DriverConnector.getDriver(), this);
     }
 
     @Override

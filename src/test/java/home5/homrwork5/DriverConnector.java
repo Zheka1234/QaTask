@@ -13,7 +13,7 @@ public class DriverConnector {
         System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 
     }
 

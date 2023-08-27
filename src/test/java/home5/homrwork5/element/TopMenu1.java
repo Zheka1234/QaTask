@@ -2,6 +2,7 @@ package home5.homrwork5.element;
 
 
 
+import home5.homrwork5.DriverConnector;
 import home5.homrwork5.enums.TopMenuItem1;
 import home5.util.Browser;
 import org.openqa.selenium.By;
@@ -33,7 +34,7 @@ public class TopMenu1 {
     private WebElement getMenuElement(TopMenuItem1 item) {
         String xpath = String.format(ITEM_PATTERN, item.getValue());
 
-        WebElement menuItem = new WebDriverWait(Browser.getDriver(), Duration.ofSeconds(WAIT_TIMEOUT))
+        WebElement menuItem = new WebDriverWait(DriverConnector.getDriver(), Duration.ofSeconds(WAIT_TIMEOUT))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         return menuItem;
     }

@@ -13,7 +13,7 @@ import java.time.Duration;
 
 public class TopMenu1 {
 
-    private static final String ITEM_PATTERN = "//ul[@class='catalog-navigation-classifier']//li[@class='catalog-navigation-classifier__item'][@data-id='%s']]";
+    private static final String ITEM_PATTERN = "//ul[@class='catalog-navigation-classifier']//li[@class='catalog-navigation-classifier__item'][@data-id='%s']";
 
     private static final Integer WAIT_TIMEOUT = 1;
 

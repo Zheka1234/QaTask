@@ -19,6 +19,8 @@ public class TopMenu1 {
 
     public void clickOnItem(TopMenuItem1 item) {
 
+        getMenuElement(item).click();
+
     }
 
 

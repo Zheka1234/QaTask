@@ -7,12 +7,12 @@ public class CatalogPage extends BasePage {
     @Override
     public void openPage() {
 
-        topMenu.clickOnItem(TopMenuItem.CATALOG);
-
-    }
+        topMenu.clickOnItem(TopMenuItem.CATALOG);    }
 
     public boolean isCatalogItemMenuPresent() {
 
         return topMenu.isItemExist(TopMenuItem.CATALOG);
     }
+
+
 }

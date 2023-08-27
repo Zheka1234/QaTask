@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class ServicesTest {
@@ -23,6 +24,13 @@ public class ServicesTest {
     @Test
     public void testNewsItemPresent() {
         assertTrue(service.isServicesItemMenuPresent());
+    }
+
+    @Test
+    public void openServicePageTest() {
+        service.openPage();
+        assertFalse(service.getServiceTitle().isEmpty());
+
     }
 
     @AfterMethod

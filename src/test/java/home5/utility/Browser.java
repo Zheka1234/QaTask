@@ -1,4 +1,5 @@
-package home5.util;
+package home5.utility;
+
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -6,15 +7,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class Browser {
-
     private static WebDriver driver;
 
-    public static void initDriver() {
+    private static void initDriver() {
         System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     public static WebDriver getDriver() {
@@ -30,6 +29,4 @@ public class Browser {
             driver = null;
         }
     }
-
 }
-

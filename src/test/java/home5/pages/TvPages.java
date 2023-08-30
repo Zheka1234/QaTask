@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class TvPages {
 
 
@@ -16,33 +18,25 @@ public class TvPages {
     @FindBy(xpath = "//label[@class='schema-filter__checkbox-item']/span[@class='schema-filter__checkbox-text'][text()='Samsung']")
     private WebElement tvSamsung;
 
-    @FindBy(xpath = "//div[@class='schema-product__title']")
-    private WebElement exampleSamsung;
+    @FindBy(xpath = "//span[@data-bind='html: product.extended_name || product.full_name']")
+    private List<WebElement> modelLglabel;
 
     public TvPages() {
         PageFactory.initElements(Browser.getDriver(), this);
     }
 
-    public void openTvPage(){
+    public void openTvPage() {
         tvLink.click();
     }
 
-    public void openTvPageLg(){
+    public void openTvPageLg() {
         tvLg.click();
     }
 
-    public boolean isOnlyLgDisplayed() {
-        return !tvSamsung.isDisplayed();
-    }
+    public List<WebElement> getLgModelLabelElements() {
 
-    public boolean isSamsungDisplayed() {
-        return tvSamsung.isDisplayed();
+        return modelLglabel;
     }
-
-    public boolean isLgTvPageDisplayed() {
-        return true;
-    }
-
 
 
 }

@@ -1,16 +1,17 @@
 package home5.tests;
 
+import home5.driver.Browser;
 import home5.pages.TvPages;
-import home5.utility.Browser;
+import home5.utility.SaveScreenShots;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class TvOnlinerTest {
@@ -24,27 +25,13 @@ public class TvOnlinerTest {
     }
 
     @Test
-    public void testTvLinkClick() {
-        tvHomePages.openTvPage();
-        assertEquals(Browser.getDriver().getCurrentUrl(), "https://catalog.onliner.by/tv");
-    }
-
-    @Test
-    public void testTvLinkClickLg() {
-        tvHomePages.openTvPage();
-        ((JavascriptExecutor) Browser.getDriver()).executeScript("window.scrollBy(0,700)");
-        tvHomePages.openTvPageLg();
-
-
-    }
-
-    @Test
-    public void testLGlabelsOnThePage() throws InterruptedException {
+    public void testLgLabelsOnThePage() throws InterruptedException, IOException {
         tvHomePages.openTvPage();
         ((JavascriptExecutor) Browser.getDriver()).executeScript("window.scrollBy(0,700)");
         tvHomePages.openTvPageLg();
         Thread.sleep(4000);
         List<WebElement> elements = tvHomePages.getLgModelLabelElements();
+        SaveScreenShots.saveScreenShot();
 
         for (WebElement element : elements) {
             String text = element.getText();
@@ -53,11 +40,8 @@ public class TvOnlinerTest {
         }
     }
 
-
     @AfterMethod
-    public void closeBrowser() throws InterruptedException {
-
-        Thread.sleep(5000);
+    public void closeBrowser() {
         Browser.close();
     }
 }

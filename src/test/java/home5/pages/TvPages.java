@@ -1,6 +1,6 @@
 package home5.pages;
 
-import home5.utility.Browser;
+import home5.driver.Browser;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;

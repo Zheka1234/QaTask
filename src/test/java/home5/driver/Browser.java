@@ -1,4 +1,4 @@
-package home5.utility;
+package home5.driver;
 
 
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class Browser {
-    private static WebDriver driver;
+    protected static WebDriver driver;
 
     private static void initDriver() {
         System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
@@ -30,3 +30,6 @@ public class Browser {
         }
     }
 }
+
+
+

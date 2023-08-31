@@ -15,9 +15,6 @@ public class TvPages {
     @FindBy(xpath = "//label[@class='schema-filter__checkbox-item']/span[@class='schema-filter__checkbox-text'][text()='LG']")
     private WebElement tvLg;
 
-    @FindBy(xpath = "//label[@class='schema-filter__checkbox-item']/span[@class='schema-filter__checkbox-text'][text()='Samsung']")
-    private WebElement tvSamsung;
-
     @FindBy(xpath = "//span[@data-bind='html: product.extended_name || product.full_name']")
     private List<WebElement> modelLglabel;
 

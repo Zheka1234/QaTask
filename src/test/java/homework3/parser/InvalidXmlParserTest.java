@@ -1,7 +1,5 @@
 package homework3.parser;
-import org.xml.sax.Attributes;
-import org.xml.sax.ContentHandler;
-import org.xml.sax.SAXException;
+
 import com.miskevich.homework3.parser.XMLParser;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -28,11 +26,16 @@ public class InvalidXmlParserTest {
     @DataProvider(name = "invalidFiles")
     public Object[][] invalidFilesProvider() {
         return new Object[][]{
-                {"src/test/java/homework3/filesxml/invalid_file_missing_root_tag.xml", Exception.class},
-                {"src/test/java/homework3/filesxml/invalid_file_missing_closing_tag.xml", Exception.class},
-                {"src/test/java/homework3/filesxml/invalid_file_unexpected_closing_tag.xml", Exception.class},
-                {"src/test/java/homework3/filesxml/invalid_file_missing_closing_bracket.xml", Exception.class},
-                {"src/test/java/homework3/filesxml/invalid_file_missing_instruction_closing_tag.xml", ArrayIndexOutOfBoundsException.class},
+                {"src/test/java/homework3/filesxml/invalid/invalid_file_missing_root_tag.xml", Exception.class},
+                {"src/test/java/homework3/filesxml/invalid/invalid_file_missing_closing_tag.xml", Exception.class},
+                {"src/test/java/homework3/filesxml/invalid/invalid_file_unexpected_closing_tag.xml", Exception.class},
+                {"src/test/java/homework3/filesxml/invalid/invalid_file_missing_closing_bracket.xml", Exception.class},
+                {"src/test/java/homework3/filesxml/invalid/invalid_atribute.xml", Exception.class},
+                {"src/test/java/homework3/filesxml/invalid/invalid_comments.xml", Exception.class},
+                {"src/test/java/homework3/filesxml/invalid/invalid_element.xml", Exception.class},
+                {"src/test/java/homework3/filesxml/invalid/invalid_file_incorect_characters.xml", Exception.class},
+                {"src/test/java/homework3/filesxml/invalid/invalid_registr.xml", Exception.class},
+                {"src/test/java/homework3/filesxml/invalid/invalid_file_missing_instruction_closing_tag.xml", ArrayIndexOutOfBoundsException.class},
         };
     }
 
@@ -42,7 +45,6 @@ public class InvalidXmlParserTest {
         assertThrows(expectedException, parser::parseDocument);
 
     }
-
 
 
     @Test(expectedExceptions = NullPointerException.class)

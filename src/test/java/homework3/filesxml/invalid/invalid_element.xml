@@ -1,0 +1,6 @@
+class name="1A" teacher="Ivanova I.I">
+<student>
+    <name>Alex</name>
+    <last_name>Strakh</last_name>
+    <average_grade>6.4</average_grade>
+</student>

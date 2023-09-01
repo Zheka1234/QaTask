@@ -1,0 +1,6 @@
+<employee>
+    <name>Boss</name>
+    <age>44</age>
+    <position>QA</position>
+    <message>salary &lt; 10000</message>
+</employee>

@@ -26,7 +26,7 @@ public class CatalogPage {
 
         Thread.sleep(5000);
 
-        section(sectionName).shouldNotBe(Condition.visible);
+        section(sectionName).shouldBe(Condition.visible);
 
     }
 

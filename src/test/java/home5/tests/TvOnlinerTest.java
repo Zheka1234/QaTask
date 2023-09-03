@@ -29,10 +29,11 @@ public class TvOnlinerTest {
         tvHomePages.openTvPage();
         ((JavascriptExecutor) Browser.getDriver()).executeScript("window.scrollBy(0,700)");
         tvHomePages.openTvPageLg();
-        Thread.sleep(4000);
+        synchronized (Browser.getDriver()) {
+            Browser.getDriver().wait(4000);
+        }
         List<WebElement> elements = tvHomePages.getLgModelLabelElements();
         SaveScreenShots.saveScreenShot();
-
         for (WebElement element : elements) {
             String text = element.getText();
             System.out.println(text);

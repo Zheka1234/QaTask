@@ -12,12 +12,12 @@ public class BasicTest {
     BasicPage basicPage = new BasicPage();
 
     @BeforeClass
-    public void openCatalog(){
+    public void openCatalog() {
         basicPage.openBasePage();
     }
 
     @AfterClass
-    public void closeResource(){
+    public void closeResource() {
         clearBrowserCookies();
         closeWindow();
     }

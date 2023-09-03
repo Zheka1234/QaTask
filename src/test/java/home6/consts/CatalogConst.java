@@ -22,7 +22,7 @@ public interface CatalogConst {
 
     String ONLINER_PRIME = "Onlíner Prime";
 
-    String DAY ="На каждый день";
+    String DAY = "На каждый день";
 
     String EAT = "Еда";
 

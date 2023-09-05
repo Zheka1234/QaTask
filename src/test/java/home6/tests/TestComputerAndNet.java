@@ -15,10 +15,6 @@ public class TestComputerAndNet {
     public void testComputerAndNet(){
         this.catalogPage.openCatalogPage();
         this.catalogPage.openComputerAndNet();
-
-
-
-
-
+        this.catalogPage.openComputerAndNetCatalog();
     }
 }

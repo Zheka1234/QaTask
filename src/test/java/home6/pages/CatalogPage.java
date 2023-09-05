@@ -1,30 +1,29 @@
 package home6.pages;
 
-import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.open;
 
 public class CatalogPage {
 
 
-    private static final String CATALOG_ITEM = "//li[@class='catalog-navigation-classifier__item ']";
+    private SelenideElement catalogNavigation = $x("//ul[@class='catalog-navigation-classifier ']");
 
-    private static final String COMPUTERS_AND_NETS_CATEGORY = "//li[@data-id='2']";
-
-    private static final String COMPUTERS_AND_NETS_ITEMS =
-            "//div[@data-id='2']/div[1]/div/div";
-
-    public ElementsCollection getCatalogItemList() {
-        return $$x(CATALOG_ITEM);
+    private SelenideElement section(String sectionName) {
+        return catalogNavigation.$x("li//span[contains(text(),'" + sectionName + "')]");
     }
 
-    public void clickComputersAndNetsCategory() {
-        $x(COMPUTERS_AND_NETS_CATEGORY).click();
+    public void openCatalogPage() {
+        open("https://catalog.onliner.by/");
     }
 
-    public ElementsCollection getListOfComputersAndNetsColumn() {
-        return $$x(COMPUTERS_AND_NETS_ITEMS);
+
+    public void checkSectionPresence(String sectionName) {
+
+        section(sectionName).shouldBe(Condition.visible);
+
     }
 
 }

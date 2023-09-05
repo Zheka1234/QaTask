@@ -50,6 +50,7 @@ public class BankingSystem implements Database {
                 "amount REAL (15)," +
                 "FOREIGN KEY (accountId) REFERENCES accounts(id)" +
                 ")");
+        statement.close();
     }
 
     @Override
@@ -59,6 +60,7 @@ public class BankingSystem implements Database {
             statement.setString(1, name);
             statement.setString(2, address);
             statement.executeUpdate();
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -90,12 +92,15 @@ public class BankingSystem implements Database {
                 insertStatement.setDouble(2, initialBalance);
                 insertStatement.setString(3, currency);
                 insertStatement.executeUpdate();
+                insertStatement.close();
 
                 System.out.println("Account created successfully!");
                 System.out.println("User ID: " + userId);
                 System.out.println("Initial balance: " + initialBalance);
                 System.out.println("Currency: " + currency);
             }
+            resultSet.close();
+            checkStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -131,6 +136,8 @@ public class BankingSystem implements Database {
                         transactionStatement.setInt(1, accountId);
                         transactionStatement.setDouble(2, amount);
                         transactionStatement.executeUpdate();
+                        statement.close();
+                        transactionStatement.close();
                     } else {
                         boolean validAmount = false;
                         while (!validAmount) {
@@ -160,6 +167,8 @@ public class BankingSystem implements Database {
                         deposit(accountId, amount);
                     }
                 }
+                userResultSet.close();
+                checkUserStatement.close();
             } else {
                 System.out.println("Invalid account ID. Want to create a new account with a different currency? Yes/no");
 
@@ -177,6 +186,8 @@ public class BankingSystem implements Database {
                     deposit(accountId, amount);
                 }
             }
+            accountResultSet.close();
+            checkAccountStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -214,6 +225,8 @@ public class BankingSystem implements Database {
                             transactionStatement.setInt(1, accountId);
                             transactionStatement.setDouble(2, -amount);
                             transactionStatement.executeUpdate();
+                            statement.close();
+                            transactionStatement.close();
                         } else {
                             System.out.println("Insufficient funds on the account or the maximum balance has been exceeded");
 
@@ -232,12 +245,19 @@ public class BankingSystem implements Database {
                             withdraw(accountId, amount);
                         }
                     }
+                    balanceResultSet.close();
+                    checkBalanceStatement.close();
                 } else {
-                    System.out.println("Non-existent user ID");
+                    userResultSet.close();
+                    checkUserStatement.close();
+                    throw new IllegalArgumentException("Non-existent user ID");
                 }
             } else {
-                System.out.println("Invalid account ID");
+                accountResultSet.close();
+                checkAccountStatement.close();
+                throw new IllegalArgumentException("Invalid account ID");
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -254,6 +274,8 @@ public class BankingSystem implements Database {
                 int count = resultSet.getInt(1);
                 return count > 0;
             }
+            statement.close();
+            resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -272,6 +294,7 @@ public class BankingSystem implements Database {
             PreparedStatement statement = connection.prepareStatement("DELETE FROM users WHERE id = ?");
             statement.setInt(1, userId);
             statement.executeUpdate();
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -294,6 +317,8 @@ public class BankingSystem implements Database {
                 System.out.println("Currency: " + currency);
                 System.out.println("-------------------------");
             }
+            statement.close();
+            resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -312,6 +337,8 @@ public class BankingSystem implements Database {
                 if (balance > 0) {
                     System.out.println("You can’t delete an account that has funds, " +
                             "well, if you want, the bank will take it for itself without problems");
+                    balanceResultSet.close();
+                    checkBalanceStatement.close();
                     return;
                 }
             }
@@ -319,6 +346,9 @@ public class BankingSystem implements Database {
             PreparedStatement statement = connection.prepareStatement("DELETE FROM accounts WHERE id = ?");
             statement.setInt(1, accountId);
             statement.executeUpdate();
+            balanceResultSet.close();
+            checkBalanceStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -330,6 +360,8 @@ public class BankingSystem implements Database {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM accounts WHERE id = ?");
             statement.setInt(1, accountId);
             ResultSet resultSet = statement.executeQuery();
+            statement.close();
+            resultSet.close();
 
             return resultSet.next();
         } catch (SQLException e) {
@@ -339,8 +371,4 @@ public class BankingSystem implements Database {
         return false;
     }
 
-
-
-
 }
-

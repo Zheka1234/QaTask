@@ -12,7 +12,7 @@ public class TestCatalogSelenide {
     private CatalogPage catalogPage = new CatalogPage();
 
     @Test
-    public void testCatalogSections() throws InterruptedException {
+    public void testCatalogSections(){
         this.catalogPage.openCatalogPage();
         this.catalogPage.checkSectionPresence("Электроника");
         this.catalogPage.checkSectionPresence("Компьютеры и");

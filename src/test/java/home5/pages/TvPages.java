@@ -16,7 +16,7 @@ public class TvPages {
     private WebElement tvLg;
 
     @FindBy(xpath = "//span[@data-bind='html: product.extended_name || product.full_name']")
-    private List<WebElement> modelLglabel;
+    private List<WebElement> modelLgLabel;
 
     public TvPages() {
         PageFactory.initElements(Browser.getDriver(), this);
@@ -32,7 +32,7 @@ public class TvPages {
 
     public List<WebElement> getLgModelLabelElements() {
 
-        return modelLglabel;
+        return modelLgLabel;
     }
 
 

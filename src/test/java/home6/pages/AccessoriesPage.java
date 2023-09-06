@@ -2,11 +2,14 @@ package home6.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import org.apache.log4j.Logger;
 
 import static com.codeborne.selenide.Selenide.$x;
 
 
 public class AccessoriesPage {
+
+    Logger log = Logger.getLogger(AccessoriesPage.class);
 
     private String AMOUNT_AND_PRICE = "[\\d]{0,}[\\,]?[\\d]+[\\s][товар[а]?[ов]?\nот\\s[\\d]+[\\,]?[\\d]{0,}[\\s]р\\.]";
 
@@ -17,6 +20,7 @@ public class AccessoriesPage {
     }
 
     public void checkAccessoriesPartFirst() {
+        log.info("checkAccessoriesPartFirst start");
         clickAccessories();
 
         SelenideElement videoCard = $x("//a[@href='https://catalog.onliner.by/videocard']/span/span[2]");
@@ -33,10 +37,11 @@ public class AccessoriesPage {
         SelenideElement motherBoard1 = $x("//a[@href='https://catalog.onliner.by/motherboard']/span/span[3]");
         motherBoard.shouldBe(Condition.visible);
         motherBoard1.should(Condition.matchText(AMOUNT_AND_PRICE));
+        log.debug("checkAccessoriesPartFirst good");
 
     }
     public void checkAccessoriesPartSecond() {
-        clickAccessories();
+        log.info("checkAccessoriesPartSecond start");
 
         SelenideElement ram = $x("//a[@href='https://catalog.onliner.by/dram']/span/span[2]");
         SelenideElement ram1 = $x("//a[@href='https://catalog.onliner.by/dram']/span/span[3]");
@@ -52,11 +57,12 @@ public class AccessoriesPage {
         SelenideElement hdd1 = $x("//a[@href='https://catalog.onliner.by/hdd']/span/span[3]");
         hdd.shouldBe(Condition.visible);
         hdd1.should(Condition.matchText(AMOUNT_AND_PRICE));
+        log.debug("checkAccessoriesPartSecond good");
 
     }
 
     public void checkAccessoriesPartThird() {
-        clickAccessories();
+        log.info("checkAccessoriesPartThird start");
 
         SelenideElement fan = $x("//a[@href='https://catalog.onliner.by/fan']/span/span[2]");
         SelenideElement fan1 = $x("//a[@href='https://catalog.onliner.by/fan']/span/span[3]");
@@ -72,11 +78,12 @@ public class AccessoriesPage {
         SelenideElement frame1 = $x("//a[@href='https://catalog.onliner.by/chassis']/span/span[3]");
         frame.shouldBe(Condition.visible);
         frame1.should(Condition.matchText(AMOUNT_AND_PRICE));
+        log.debug("checkAccessoriesPartThird good");
 
     }
 
     public void checkAccessoriesPartFourth() {
-        clickAccessories();
+        log.info("checkAccessoriesPartFourth start");
 
         SelenideElement accessory = $x("//a[@href='https://catalog.onliner.by/moddingpc']/span/span[2]");
         SelenideElement accessory1 = $x("//a[@href='https://catalog.onliner.by/moddingpc']/span/span[3]");
@@ -94,11 +101,12 @@ public class AccessoriesPage {
         SelenideElement network1 = $x("//a[@href='https://catalog.onliner.by/networkadapter']/span/span[3]");
         network.shouldBe(Condition.visible);
         network1.should(Condition.matchText(AMOUNT_AND_PRICE));
+        log.debug("checkAccessoriesPartFourth good");
 
     }
 
     public void checkAccessoriesPartFifth() {
-        clickAccessories();
+        log.info("checkAccessoriesPartFifth start");
 
         SelenideElement optical = $x("//a[@href='https://catalog.onliner.by/optical']/span/span[2]");
         SelenideElement optical1 = $x("//a[@href='https://catalog.onliner.by/optical']/span/span[3]");
@@ -116,5 +124,6 @@ public class AccessoriesPage {
         SelenideElement mining1 = $x("//a[@href='https://catalog.onliner.by/mining_acs']/span/span[3]");
         mining.shouldBe(Condition.visible);
         mining1.should(Condition.matchText(AMOUNT_AND_PRICE));
+        log.debug("checkAccessoriesPartFifth good");
     }
 }

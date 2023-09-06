@@ -11,16 +11,9 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class CatalogPageMobile {
 
-
     private SelenideElement catalogNavigation = $x("//ul[@class='catalog-navigation-classifier ']");
 
     private SelenideElement button = $x("//span[contains(text(), 'Компьютеры и')]");
-
-    private void clickAccessories() {
-        SelenideElement element =
-                $x("//div[@class='catalog-navigation-list__aside-title' and text()=' Комплектующие ']");
-        element.shouldBe(Condition.visible).click();
-    }
 
     private void clickElementByText(String text) {
         SelenideElement element =
@@ -60,10 +53,6 @@ public class CatalogPageMobile {
         for (String text : elementTexts) {
             clickElementByText(text);
         }
-    }
-
-    public void checkAccessories(){
-
     }
 
 }

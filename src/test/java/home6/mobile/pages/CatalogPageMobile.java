@@ -1,4 +1,4 @@
-package home6.pages;
+package home6.mobile.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -9,7 +9,7 @@ import java.util.List;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
-public class CatalogPage {
+public class CatalogPageMobile {
 
 
     private SelenideElement catalogNavigation = $x("//ul[@class='catalog-navigation-classifier ']");
@@ -25,7 +25,7 @@ public class CatalogPage {
     private void clickElementByText(String text) {
         SelenideElement element =
                 $x("//div[@class='catalog-navigation-list__aside-title' and text()=' " + text + " ']");
-        element.shouldBe(Condition.visible).click();
+        element.shouldBe(Condition.visible);
     }
 
     private SelenideElement section(String sectionName) {

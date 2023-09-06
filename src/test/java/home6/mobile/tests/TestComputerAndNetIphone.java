@@ -8,8 +8,7 @@ public class TestComputerAndNetIphone {
 
     static {
         System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
-        Configuration.browser = "chrome";
-        Configuration.browserSize = "414x736";
+        System.setProperty("chromeoptions.mobileEmulation", "deviceName=iPhone 12 Pro");
     }
 
     private CatalogPageMobile catalogPage = new CatalogPageMobile();

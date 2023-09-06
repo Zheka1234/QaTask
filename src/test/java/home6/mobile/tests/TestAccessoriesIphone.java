@@ -7,6 +7,7 @@ public class TestAccessoriesIphone {
 
     static {
         System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
+        System.setProperty("chromeoptions.mobileEmulation", "deviceName=iPhone 12 Pro");
     }
 
     private CatalogPageMobile catalogPage = new CatalogPageMobile();

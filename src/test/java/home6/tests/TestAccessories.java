@@ -1,6 +1,5 @@
 package home6.tests;
 
-import com.codeborne.selenide.Configuration;
 import home6.pages.AccessoriesPage;
 import home6.pages.CatalogPage;
 import org.testng.annotations.Test;

@@ -1,4 +1,4 @@
-package homeworkCucumber.enums.menuOnliner;
+package homeworkCucumber.enums.onliner.auto;
 
 public enum MenuItemAutoBrand {
 

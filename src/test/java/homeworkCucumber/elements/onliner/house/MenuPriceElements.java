@@ -1,7 +1,7 @@
-package homeworkCucumber.elements;
+package homeworkCucumber.elements.onliner.house;
 
 import homeworkCucumber.driver.BrowserDriver;
-import homeworkCucumber.enums.menuOnliner.MenuItemAutoBrand;
+import homeworkCucumber.enums.onliner.house.MenuItemPrice;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,12 +9,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class MenuBrandElements {
-
+public class MenuPriceElements {
     private static final String ITEM_PATTERN = "//span[contains(text(),'%s')]";
 
 
-    private WebElement getMenuBrand(MenuItemAutoBrand menuElements) {
+    private WebElement getMenuPrice(MenuItemPrice menuElements) {
         String xpath = String.format(ITEM_PATTERN, menuElements.getValue());
 
         WebElement menuItem = new WebDriverWait(BrowserDriver.getDriver(), Duration.ofSeconds(3))
@@ -22,7 +21,7 @@ public class MenuBrandElements {
         return menuItem;
     }
 
-    public void checkItemBrand(MenuItemAutoBrand item) {
-        getMenuBrand(item).isDisplayed();
+    public void checkItemPrice(MenuItemPrice item) {
+        getMenuPrice(item).isDisplayed();
     }
 }

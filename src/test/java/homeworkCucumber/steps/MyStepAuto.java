@@ -1,9 +1,9 @@
 package homeworkCucumber.steps;
 
 import homeworkCucumber.driver.BrowserDriver;
-import homeworkCucumber.enums.menuOnliner.MenuItemAuto;
-import homeworkCucumber.enums.menuOnliner.MenuItemAutoBrand;
-import homeworkCucumber.enums.menuOnliner.MenuItemCity;
+import homeworkCucumber.enums.onliner.auto.MenuItemAuto;
+import homeworkCucumber.enums.onliner.auto.MenuItemAutoBrand;
+import homeworkCucumber.enums.onliner.MenuItemCity;
 import homeworkCucumber.pages.BasePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,7 +17,7 @@ public class MyStepAuto extends BasePage {
 
 
     @FindBy(xpath = "//span[@class='b-main-navigation__text'][contains(text(), 'Автобарахолка')]")
-    private WebElement homePage;
+    private WebElement homePageAuto;
 
     public MyStepAuto() {
         PageFactory.initElements(BrowserDriver.getDriver(), this);
@@ -32,8 +32,8 @@ public class MyStepAuto extends BasePage {
     @When("On the open page, the user will move the mouse to the AutoFlea Market menu")
     public boolean hoverTheCursorOver() {
         Actions actions = new Actions(BrowserDriver.getDriver());
-        actions.moveToElement(homePage).perform();
-        return homePage.isDisplayed();
+        actions.moveToElement(homePageAuto).perform();
+        return homePageAuto.isDisplayed();
     }
 
     @Then("The user saw prices, cities, brands")

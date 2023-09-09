@@ -1,4 +1,4 @@
-package homeworkCucumber.enums.menuOnliner;
+package homeworkCucumber.enums.onliner;
 
 public enum MenuItemCity {
 

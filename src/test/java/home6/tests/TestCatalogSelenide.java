@@ -1,6 +1,9 @@
 package home6.tests;
 
 import home6.pages.CatalogPage;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class TestCatalogSelenide {
@@ -11,18 +14,25 @@ public class TestCatalogSelenide {
 
     private CatalogPage catalogPage = new CatalogPage();
 
-    @Test
-    public void testCatalogSections(){
+    @DataProvider(name = "sectionNames")
+    public Object[][] sectionNames() {
+        return new Object[][] {
+                {"Электроника"},
+                {"Компьютеры и"},
+                {"Бытовая техника"},
+                {"Стройка и"},
+                {"Дом и"},
+                {"Авто и"},
+                {"Красота и"},
+                {"Детям и"},
+                {"Onlíner Prime"},
+                {"На каждый день"}
+        };
+    }
+
+    @Test(dataProvider = "sectionNames")
+    public void testCatalogSections(String sectionName) {
         this.catalogPage.openCatalogPage();
-        this.catalogPage.checkSectionPresence("Электроника");
-        this.catalogPage.checkSectionPresence("Компьютеры и");
-        this.catalogPage.checkSectionPresence("Бытовая техника");
-        this.catalogPage.checkSectionPresence("Стройка и");
-        this.catalogPage.checkSectionPresence("Дом и");
-        this.catalogPage.checkSectionPresence("Авто и");
-        this.catalogPage.checkSectionPresence("Красота и");
-        this.catalogPage.checkSectionPresence("Детям и");
-        this.catalogPage.checkSectionPresence("Onlíner Prime");
-        this.catalogPage.checkSectionPresence("На каждый день");
+        this.catalogPage.checkSectionPresence(sectionName);
     }
 }

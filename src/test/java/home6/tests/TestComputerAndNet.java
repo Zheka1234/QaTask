@@ -17,4 +17,7 @@ public class TestComputerAndNet {
         this.catalogPage.openComputerAndNet();
         this.catalogPage.openComputerAndNetCatalog();
     }
+
+
+
 }

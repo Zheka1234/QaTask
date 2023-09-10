@@ -2,6 +2,7 @@ package home6.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementNotFound;
 import org.apache.log4j.Logger;
 
 import java.util.Arrays;
@@ -67,7 +68,11 @@ public class CatalogPage {
                 "Мультимедиа периферия"
         );
         for (String text : elementTexts) {
-            clickElementByText(text);
+            try {
+                clickElementByText(text);
+            } catch (ElementNotFound e) {
+                log.warn("Element not found: " + e.getMessage());
+            }
         }
         log.debug("openComputerAndNetCatalog good");
     }

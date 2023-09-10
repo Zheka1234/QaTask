@@ -23,7 +23,7 @@ public class MyStepAuto extends BasePage {
         PageFactory.initElements(BrowserDriver.getDriver(), this);
     }
 
-    @Given("openPage")
+    @Given("openPage onliner")
     public void openPage() {
         BrowserDriver.getDriver().get("https://www.onliner.by");
     }

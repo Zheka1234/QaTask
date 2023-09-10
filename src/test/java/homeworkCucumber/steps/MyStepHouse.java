@@ -26,7 +26,7 @@ public class MyStepHouse extends BasePage {
 
 
 
-    @Given("openPageStart")
+    @Given("openPage onliner Start")
     public void openPageStart() {
         BrowserDriver.getDriver().get("https://www.onliner.by");
     }

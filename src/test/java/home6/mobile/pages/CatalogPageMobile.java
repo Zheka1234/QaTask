@@ -2,6 +2,7 @@ package home6.mobile.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementNotFound;
 import home6.pages.CatalogPage;
 import org.apache.log4j.Logger;
 
@@ -53,7 +54,8 @@ public class CatalogPageMobile {
     }
 
     public void openComputerAndNetCatalog() {
-        log.debug("openComputerAndNetCatalog start");
+        log.info("openComputerAndNetCatalog start");
+
 
         List<String> elementTexts = Arrays.asList(
                 "Комплектующие",
@@ -64,9 +66,12 @@ public class CatalogPageMobile {
                 "Мультимедиа периферия"
         );
         for (String text : elementTexts) {
-            clickElementByText(text);
+            try {
+                clickElementByText(text);
+            } catch (ElementNotFound e) {
+                log.warn("Element not found: " + e.getMessage());
+            }
         }
         log.debug("openComputerAndNetCatalog good");
     }
-
 }

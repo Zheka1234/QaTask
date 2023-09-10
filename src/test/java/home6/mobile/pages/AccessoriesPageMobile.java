@@ -28,20 +28,12 @@ public class AccessoriesPageMobile {
             SelenideElement videoCard1 = $x("//a[@href='https://catalog.onliner.by/videocard']/span/span[3]");
             videoCard.shouldBe(Condition.visible);
             videoCard1.should(Condition.matchText(AMOUNT_AND_PRICE));
-        } catch (ElementNotFound e) {
-            log.warn("Element not found: " + e.getMessage());
 
-        }
-        try {
             SelenideElement cpu = $x("//a[@href='https://catalog.onliner.by/cpu']/span/span[2]");
             SelenideElement cpu1 = $x("//a[@href='https://catalog.onliner.by/cpu']/span/span[3]");
             cpu.shouldBe(Condition.visible);
             cpu1.should(Condition.matchText(AMOUNT_AND_PRICE));
-        } catch (ElementNotFound e) {
-            log.warn("Element not found: " + e.getMessage());
 
-        }
-        try {
             SelenideElement motherBoard = $x("//a[@href='https://catalog.onliner.by/motherboard']/span/span[2]");
             SelenideElement motherBoard1 = $x("//a[@href='https://catalog.onliner.by/motherboard']/span/span[3]");
             motherBoard.shouldBe(Condition.visible);
@@ -61,21 +53,15 @@ public class AccessoriesPageMobile {
             SelenideElement ram1 = $x("//a[@href='https://catalog.onliner.by/dram']/span/span[3]");
             ram.shouldBe(Condition.visible);
             ram1.should(Condition.matchText(AMOUNT_AND_PRICE));
-        } catch (ElementNotFound e) {
-            log.warn("Element not found: " + e.getMessage());
 
-        }
-        try {
             SelenideElement ssd = $x("//a[@href='https://catalog.onliner.by/ssd']/span/span[2]");
             SelenideElement ssd1 = $x("//a[@href='https://catalog.onliner.by/ssd']/span/span[3]");
             ssd.shouldBe(Condition.visible);
             ssd1.should(Condition.matchText(AMOUNT_AND_PRICE));
-        } catch (ElementNotFound e) {
-            log.warn("Element not found: " + e.getMessage());
-        }
-        try {
+
             SelenideElement hdd = $x("//a[@href='https://catalog.onliner.by/hdd']/span/span[2]");
             SelenideElement hdd1 = $x("//a[@href='https://catalog.onliner.by/hdd']/span/span[3]");
+            hdd.scrollIntoView(true);
             hdd.shouldBe(Condition.visible);
             hdd1.should(Condition.matchText(AMOUNT_AND_PRICE));
         } catch (ElementNotFound e) {
@@ -93,21 +79,12 @@ public class AccessoriesPageMobile {
             SelenideElement fan1 = $x("//a[@href='https://catalog.onliner.by/fan']/span/span[3]");
             fan.shouldBe(Condition.visible);
             fan1.should(Condition.matchText(AMOUNT_AND_PRICE));
-        } catch (ElementNotFound e) {
-            log.warn("Element not found: " + e.getMessage());
 
-        }
-
-        try {
             SelenideElement powerSupply = $x("//a[@href='https://catalog.onliner.by/powersupply']/span/span[2]");
             SelenideElement powerSupply1 = $x("//a[@href='https://catalog.onliner.by/powersupply']/span/span[3]");
             powerSupply.shouldBe(Condition.visible);
             powerSupply1.should(Condition.matchText(AMOUNT_AND_PRICE));
-        } catch (ElementNotFound e) {
-            log.warn("Element not found: " + e.getMessage());
 
-        }
-        try {
             SelenideElement frame = $x("//a[@href='https://catalog.onliner.by/chassis']/span/span[2]");
             SelenideElement frame1 = $x("//a[@href='https://catalog.onliner.by/chassis']/span/span[3]");
             frame.shouldBe(Condition.visible);
@@ -127,10 +104,7 @@ public class AccessoriesPageMobile {
             SelenideElement accessory1 = $x("//a[@href='https://catalog.onliner.by/moddingpc']/span/span[3]");
             accessory.shouldBe(Condition.visible);
             accessory1.should(Condition.matchText(AMOUNT_AND_PRICE));
-        } catch (ElementNotFound e) {
-            log.warn("Element not found: " + e.getMessage());
-        }
-        try {
+
             SelenideElement soundCard =
                     $x("//a[@href='https://catalog.onliner.by/" +
                             "soundcard?type_soundcard%5B0%5D=internal&type_soundcard%5Boperation%5D=union']/span/span[2]");
@@ -139,11 +113,7 @@ public class AccessoriesPageMobile {
                             "soundcard?type_soundcard%5B0%5D=internal&type_soundcard%5Boperation%5D=union']/span/span[3]");
             soundCard.shouldBe(Condition.visible);
             soundCard1.should(Condition.matchText(AMOUNT_AND_PRICE));
-        } catch (ElementNotFound e) {
-            log.warn("Element not found: " + e.getMessage());
 
-        }
-        try {
             SelenideElement network = $x("//a[@href='https://catalog.onliner.by/networkadapter']/span/span[2]");
             SelenideElement network1 = $x("//a[@href='https://catalog.onliner.by/networkadapter']/span/span[3]");
             network.shouldBe(Condition.visible);
@@ -163,11 +133,7 @@ public class AccessoriesPageMobile {
             SelenideElement optical1 = $x("//a[@href='https://catalog.onliner.by/optical']/span/span[3]");
             optical.shouldBe(Condition.visible);
             optical1.should(Condition.matchText(AMOUNT_AND_PRICE));
-        } catch (ElementNotFound e) {
-            log.warn("Element not found: " + e.getMessage());
 
-        }
-        try {
             SelenideElement tvTuner =
                     $x("//a[@href='https://catalog.onliner.by/" +
                             "tvtuner?execution_tvtune%5B0%5D=in&execution_tvtune%5Boperation%5D=union']/span/span[2]");
@@ -176,11 +142,7 @@ public class AccessoriesPageMobile {
                             "tvtuner?execution_tvtune%5B0%5D=in&execution_tvtune%5Boperation%5D=union']/span/span[3]");
             tvTuner.shouldBe(Condition.visible);
             tvTuner1.should(Condition.matchText(AMOUNT_AND_PRICE));
-        } catch (ElementNotFound e) {
-            log.warn("Element not found: " + e.getMessage());
 
-        }
-        try {
             SelenideElement mining = $x("//a[@href='https://catalog.onliner.by/mining_acs']/span/span[2]");
             SelenideElement mining1 = $x("//a[@href='https://catalog.onliner.by/mining_acs']/span/span[3]");
             mining.shouldBe(Condition.visible);

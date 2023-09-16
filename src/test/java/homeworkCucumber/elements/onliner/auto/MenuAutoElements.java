@@ -22,7 +22,8 @@ public class MenuAutoElements {
         return menuItem;
     }
 
-    public void checkItemAuto(MenuItemAuto item) {
+    public boolean checkItemAuto(MenuItemAuto item) {
         getMenuAuto(item).isDisplayed();
+        return true;
     }
 }

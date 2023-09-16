@@ -22,7 +22,8 @@ public class MenuBrandElements {
         return menuItem;
     }
 
-    public void checkItemBrand(MenuItemAutoBrand item) {
+    public boolean checkItemBrand(MenuItemAutoBrand item) {
         getMenuBrand(item).isDisplayed();
+        return true;
     }
 }

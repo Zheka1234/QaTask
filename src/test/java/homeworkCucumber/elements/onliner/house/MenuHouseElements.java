@@ -21,7 +21,8 @@ public class MenuHouseElements {
         return menuItem;
     }
 
-    public void checkItemHouse(MenuItemFlats item) {
+    public boolean checkItemHouse(MenuItemFlats item) {
         getMenuFlats(item).isDisplayed();
+        return true;
     }
 }

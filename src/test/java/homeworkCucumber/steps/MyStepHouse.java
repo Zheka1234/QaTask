@@ -13,6 +13,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static org.testng.Assert.assertTrue;
+
 public class MyStepHouse extends BasePage {
 
 
@@ -24,38 +26,37 @@ public class MyStepHouse extends BasePage {
     }
 
 
-
-
     @Given("openPage onliner Start")
     public void openPageStart() {
         BrowserDriver.getDriver().get("https://www.onliner.by");
     }
 
     @When("On the open page, the user will move the mouse pointer over the house and apartment menu")
-    public boolean onTheOpenPageTheUserWillMoveTheMousePointerOverTheHouseAndApartmentMenu() {
+    public void onTheOpenPageTheUserWillMoveTheMousePointerOverTheHouseAndApartmentMenu() {
         Actions actions = new Actions(BrowserDriver.getDriver());
         actions.moveToElement(homePageHouse).perform();
-        return homePageHouse.isDisplayed();
+
+
     }
 
     @Then("The user saw prices, cities")
-    public boolean theUserSawPricesCities() {
-        menuAutoElementsHouse.checkItemHouse(MenuItemFlats.ONE_ROOM);
-        menuAutoElementsHouse.checkItemHouse(MenuItemFlats.TWO_ROOMS);
-        menuAutoElementsHouse.checkItemHouse(MenuItemFlats.THREE_ROOMS);
-        menuAutoElementsHouse.checkItemHouse(MenuItemFlats.FOUR_PLUS_MINUS);
+    public void theUserSawPricesCities() {
+        assertTrue(menuAutoElementsHouse.checkItemHouse(MenuItemFlats.ONE_ROOM));
+        assertTrue((menuAutoElementsHouse.checkItemHouse(MenuItemFlats.TWO_ROOMS)));
+        assertTrue((menuAutoElementsHouse.checkItemHouse(MenuItemFlats.THREE_ROOMS)));
+        assertTrue((menuAutoElementsHouse.checkItemHouse(MenuItemFlats.FOUR_PLUS_MINUS)));
 
-        menuAutoElementsPrice.checkItemPrice(MenuItemPrice.BEFORE);
-        menuAutoElementsPrice.checkItemPrice(MenuItemPrice.TO);
-        menuAutoElementsPrice.checkItemPrice(MenuItemPrice.PRICE);
+        assertTrue((menuAutoElementsPrice.checkItemPrice(MenuItemPrice.BEFORE)));
+        assertTrue((menuAutoElementsPrice.checkItemPrice(MenuItemPrice.TO)));
+        assertTrue((menuAutoElementsPrice.checkItemPrice(MenuItemPrice.PRICE)));
 
-        menuAutoElementsCity.checkItemCity(MenuItemCity.MINSK);
-        menuAutoElementsCity.checkItemCity(MenuItemCity.GOMEL);
-        menuAutoElementsCity.checkItemCity(MenuItemCity.GRODNO);
-        menuAutoElementsCity.checkItemCity(MenuItemCity.MOGILEV);
-        menuAutoElementsCity.checkItemCity(MenuItemCity.VITEBSK);
-        menuAutoElementsCity.checkItemCity(MenuItemCity.BREST);
+        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.MINSK)));
+        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.GOMEL)));
+        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.GRODNO)));
+        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.MOGILEV)));
+        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.VITEBSK)));
+        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.BREST)));
 
-        return true;
+
     }
 }

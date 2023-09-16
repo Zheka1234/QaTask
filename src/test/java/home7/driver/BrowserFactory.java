@@ -14,7 +14,7 @@ public class BrowserFactory {
 
 
     static {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedrivegr.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/driver/chromedriver.exe");
     }
 
     public static WebDriver createDriver(BrowserType browserType) {

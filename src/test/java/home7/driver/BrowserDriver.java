@@ -14,7 +14,7 @@ public class BrowserDriver {
     }
 
     public static void initDriver() {
-        browserType = BrowserType.RemoteWebDriver;
+        browserType = BrowserType.CHROME;
         driver = BrowserFactory.createDriver(browserType);
     }
 

@@ -22,8 +22,13 @@ public class MenuCityElements {
         return menuItem;
     }
 
-    public boolean checkItemCity(MenuItemCity item) {
-        getMenuCity(item).isDisplayed();
+    public boolean checkItemsCity(MenuItemCity... items) {
+        for (MenuItemCity item : items) {
+            if (!getMenuCity(item).isDisplayed()) {
+                return true;
+            }
+        }
         return true;
     }
 }
+

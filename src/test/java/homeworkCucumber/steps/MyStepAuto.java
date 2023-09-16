@@ -32,41 +32,46 @@ public class MyStepAuto extends BasePage {
 
 
     @When("On the open page, the user will move the mouse to the AutoFlea Market menu")
-    public boolean hoverTheCursorOver() {
+    public void hoverTheCursorOver() {
         Actions actions = new Actions(BrowserDriver.getDriver());
         actions.moveToElement(homePageAuto).perform();
-        return homePageAuto.isDisplayed();
+        assertTrue(homePageAuto.isDisplayed(), "Home page auto element is not displayed");
     }
 
     @Then("The user saw prices, cities, brands")
     public void browseFields() {
-        assertTrue(menuAutoElements.checkItemAuto(MenuItemAuto.CAR_REVIEWS));
-        assertTrue(menuAutoElements.checkItemAuto(MenuItemAuto.NEW_CAR));
-        assertTrue(menuAutoElements.checkItemAuto(MenuItemAuto.PRICE_WITH_VAT));
-        assertTrue(menuAutoElements.checkItemAuto(MenuItemAuto.WITH_MILEAGE));
-        assertTrue(menuAutoElements.checkItemAuto(MenuItemAuto.AUTO_TO));
-        assertTrue(menuAutoElements.checkItemAuto(MenuItemAuto.AUTO_MORE));
+        assertTrue(menuAutoElements.checkItemsAuto(
+                MenuItemAuto.CAR_REVIEWS,
+                MenuItemAuto.NEW_CAR,
+                MenuItemAuto.PRICE_WITH_VAT,
+                MenuItemAuto.WITH_MILEAGE,
+                MenuItemAuto.AUTO_TO,
+                MenuItemAuto.AUTO_MORE
+        ));
 
-        assertTrue(menuAutoElementsCity.checkItemCity(MenuItemCity.MINSK));
-        assertTrue(menuAutoElementsCity.checkItemCity(MenuItemCity.GOMEL));
-        assertTrue(menuAutoElementsCity.checkItemCity(MenuItemCity.GRODNO));
-        assertTrue(menuAutoElementsCity.checkItemCity(MenuItemCity.MOGILEV));
-        assertTrue(menuAutoElementsCity.checkItemCity(MenuItemCity.VITEBSK));
-        assertTrue(menuAutoElementsCity.checkItemCity(MenuItemCity.BREST));
+        assertTrue(menuAutoElementsCity.checkItemsCity(
+                MenuItemCity.MINSK,
+                MenuItemCity.GOMEL,
+                MenuItemCity.GRODNO,
+                MenuItemCity.MOGILEV,
+                MenuItemCity.VITEBSK,
+                MenuItemCity.BREST
+        ));
 
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.AUDI));
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.BMW));
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.CITROEN));
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.FORD));
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.MAZDA));
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.MERCEDES_BENZ));
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.NISSAN));
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.OPEL));
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.PEUGEOT));
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.RENAULT));
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.TOYOTA));
-        assertTrue(menuAutoElementsBrand.checkItemBrand(MenuItemAutoBrand.VOLKSWAGEN));
-
+        assertTrue(menuAutoElementsBrand.checkItemsBrand(
+                MenuItemAutoBrand.AUDI,
+                MenuItemAutoBrand.BMW,
+                MenuItemAutoBrand.CITROEN,
+                MenuItemAutoBrand.FORD,
+                MenuItemAutoBrand.MAZDA,
+                MenuItemAutoBrand.MERCEDES_BENZ,
+                MenuItemAutoBrand.NISSAN,
+                MenuItemAutoBrand.OPEL,
+                MenuItemAutoBrand.PEUGEOT,
+                MenuItemAutoBrand.RENAULT,
+                MenuItemAutoBrand.TOYOTA,
+                MenuItemAutoBrand.VOLKSWAGEN
+        ));
     }
 
 }

@@ -28,35 +28,38 @@ public class MyStepHouse extends BasePage {
 
     @Given("openPage onliner Start")
     public void openPageStart() {
-        BrowserDriver.getDriver().get("https://www.onliner.by");
+        BrowserDriver.getDriver();
     }
 
     @When("On the open page, the user will move the mouse pointer over the house and apartment menu")
     public void onTheOpenPageTheUserWillMoveTheMousePointerOverTheHouseAndApartmentMenu() {
         Actions actions = new Actions(BrowserDriver.getDriver());
         actions.moveToElement(homePageHouse).perform();
-
-
+        assertTrue(homePageHouse.isDisplayed(), "Home page house element is not displayed");
     }
 
     @Then("The user saw prices, cities")
     public void theUserSawPricesCities() {
-        assertTrue(menuAutoElementsHouse.checkItemHouse(MenuItemFlats.ONE_ROOM));
-        assertTrue((menuAutoElementsHouse.checkItemHouse(MenuItemFlats.TWO_ROOMS)));
-        assertTrue((menuAutoElementsHouse.checkItemHouse(MenuItemFlats.THREE_ROOMS)));
-        assertTrue((menuAutoElementsHouse.checkItemHouse(MenuItemFlats.FOUR_PLUS_MINUS)));
+        assertTrue(menuAutoElementsHouse.checkItemsHouse(
+                MenuItemFlats.ONE_ROOM,
+                MenuItemFlats.TWO_ROOMS,
+                MenuItemFlats.THREE_ROOMS,
+                MenuItemFlats.FOUR_PLUS_MINUS
+        ));
 
-        assertTrue((menuAutoElementsPrice.checkItemPrice(MenuItemPrice.BEFORE)));
-        assertTrue((menuAutoElementsPrice.checkItemPrice(MenuItemPrice.TO)));
-        assertTrue((menuAutoElementsPrice.checkItemPrice(MenuItemPrice.PRICE)));
+        assertTrue(menuAutoElementsPrice.checkItemsPrice(
+                MenuItemPrice.BEFORE,
+                MenuItemPrice.TO,
+                MenuItemPrice.PRICE
+        ));
 
-        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.MINSK)));
-        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.GOMEL)));
-        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.GRODNO)));
-        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.MOGILEV)));
-        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.VITEBSK)));
-        assertTrue((menuAutoElementsCity.checkItemCity(MenuItemCity.BREST)));
-
-
+        assertTrue(menuAutoElementsCity.checkItemsCity(
+                MenuItemCity.MINSK,
+                MenuItemCity.GOMEL,
+                MenuItemCity.GRODNO,
+                MenuItemCity.MOGILEV,
+                MenuItemCity.VITEBSK,
+                MenuItemCity.BREST
+        ));
     }
 }

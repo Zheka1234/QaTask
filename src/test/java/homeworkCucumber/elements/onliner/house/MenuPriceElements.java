@@ -21,8 +21,12 @@ public class MenuPriceElements {
         return menuItem;
     }
 
-    public boolean checkItemPrice(MenuItemPrice item) {
-        getMenuPrice(item).isDisplayed();
+    public boolean checkItemsPrice(MenuItemPrice... items) {
+        for (MenuItemPrice item : items) {
+            if (!getMenuPrice(item).isDisplayed()) {
+                return true;
+            }
+        }
         return true;
     }
 }

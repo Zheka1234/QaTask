@@ -14,9 +14,7 @@ public class BasePage {
 
     protected MenuBrandElements menuAutoElementsBrand = new MenuBrandElements();
 
-
     protected MenuHouseElements menuAutoElementsHouse = new MenuHouseElements();
-
 
     protected MenuPriceElements menuAutoElementsPrice = new MenuPriceElements();
 

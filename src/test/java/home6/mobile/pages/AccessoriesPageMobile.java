@@ -3,14 +3,11 @@ package home6.mobile.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
-import org.apache.log4j.Logger;
 
 import static com.codeborne.selenide.Selenide.$x;
 
 
-public class AccessoriesPageMobile {
-
-    Logger log = Logger.getLogger(AccessoriesPageMobile.class);
+public class AccessoriesPageMobile extends BasePageMobile {
 
     private String AMOUNT_AND_PRICE = "[\\d]{0,}[\\,]?[\\d]+[\\s][товар[а]?[ов]?\nот\\s[\\d]+[\\,]?[\\d]{0,}[\\s]р\\.]";
 

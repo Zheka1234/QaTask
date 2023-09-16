@@ -1,22 +1,17 @@
 package home6.tests;
 
 import home6.pages.CatalogPage;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class TestCatalogSelenide {
-
-    static {
-        System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
-    }
 
     private CatalogPage catalogPage = new CatalogPage();
 
     @DataProvider(name = "sectionNames")
     public Object[][] sectionNames() {
-        return new Object[][] {
+        return new Object[][]{
                 {"Электроника"},
                 {"Компьютеры и"},
                 {"Бытовая техника"},
@@ -32,7 +27,13 @@ public class TestCatalogSelenide {
 
     @Test(dataProvider = "sectionNames")
     public void testCatalogSections(String sectionName) {
-        this.catalogPage.openCatalogPage();
-        this.catalogPage.checkSectionPresence(sectionName);
+        catalogPage.openCatalogPage();
+        SoftAssert soft = new SoftAssert();
+        soft.assertTrue(catalogPage.checkSectionPresence(sectionName));
+
+        soft.assertAll();
+
     }
+
+
 }

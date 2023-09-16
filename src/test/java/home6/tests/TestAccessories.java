@@ -6,14 +6,11 @@ import org.testng.annotations.Test;
 
 public class TestAccessories {
 
-    static {
-        System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
-    }
     private CatalogPage catalogPage = new CatalogPage();
-    private AccessoriesPage accessoriesPage= new AccessoriesPage();
+    private AccessoriesPage accessoriesPage = new AccessoriesPage();
 
     @Test
-    public void testAccessories(){
+    public void testAccessories() {
         catalogPage.openCatalogPage();
         catalogPage.openComputerAndNet();
         accessoriesPage.checkAccessoriesPartFirst();

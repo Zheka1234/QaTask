@@ -8,9 +8,8 @@ import org.apache.log4j.Logger;
 import static com.codeborne.selenide.Selenide.$x;
 
 
-public class AccessoriesPage {
+public class AccessoriesPage extends BasePage{
 
-    Logger log = Logger.getLogger(AccessoriesPage.class);
 
     private String AMOUNT_AND_PRICE = "[\\d]{0,}[\\,]?[\\d]+[\\s][товар[а]?[ов]?\nот\\s[\\d]+[\\,]?[\\d]{0,}[\\s]р\\.]";
 

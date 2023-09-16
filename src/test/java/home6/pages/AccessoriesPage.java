@@ -13,6 +13,7 @@ public class AccessoriesPage extends BasePage {
 
 
     public void clickAccessories() {
+        log.info("clickAccessories start");
         SelenideElement element =
                 $x("//div[@class='catalog-navigation-list__aside-title' and text()=' Комплектующие ']");
         element.shouldBe(Condition.visible).click();
@@ -27,13 +28,14 @@ public class AccessoriesPage extends BasePage {
     }
 
     public SelenideElement sectionFour() {
+        log.info("sectionFour start");
         SelenideElement element = $x("//div[.=' Комплектующие ']//..//a//span[@class='catalog-navigation-list__dropdown-description']")
                 .shouldBe(Condition.matchText(AMOUNT_AND_PRICE));
         return element;
     }
 
     public boolean checkSectionPresenceThird(String sectionNameThird) {
-        log.info("checkSectionPresenceTwo start");
+        log.info("checkSectionPresenceThird start");
 
         sectionThird(sectionNameThird).shouldBe(Condition.visible);
 
@@ -41,7 +43,7 @@ public class AccessoriesPage extends BasePage {
     }
 
     public boolean checkSectionPresenceFour(String sectionNameFour) {
-        log.info("checkSectionPresenceTwo start");
+        log.info("checkSectionPresenceFour start");
 
         sectionFour().shouldBe(Condition.visible);
 

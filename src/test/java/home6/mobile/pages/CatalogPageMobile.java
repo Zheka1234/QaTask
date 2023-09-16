@@ -49,7 +49,7 @@ public class CatalogPageMobile extends BasePageMobile{
 
 
     public boolean checkSectionPresenceTwo(String sectionNameTwo) {
-        log.info("checkSectionPresence start");
+        log.info("checkSectionPresenceTwo start");
 
         sectionTwo(sectionNameTwo).shouldBe(Condition.visible);
 

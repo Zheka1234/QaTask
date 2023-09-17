@@ -13,6 +13,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
+import static homeworkCucumber.driver.BrowserDriver.getPropertiess;
 import static org.testng.Assert.assertTrue;
 
 public class MyStepAuto extends BasePage {
@@ -21,25 +24,25 @@ public class MyStepAuto extends BasePage {
     @FindBy(xpath = "//span[@class='b-main-navigation__text'][contains(text(), 'Автобарахолка')]")
     private WebElement homePageAuto;
 
-    public MyStepAuto() {
+    public MyStepAuto()throws IOException {
         PageFactory.initElements(BrowserDriver.getDriver(), this);
     }
 
     @Given("openPage onliner")
-    public void openPage() {
-        BrowserDriver.getDriver().get("https://www.onliner.by");
+    public void openPage()throws IOException {
+        BrowserDriver.getDriver().get(getPropertiess().getProperty("siteUrl"));
     }
 
 
     @When("On the open page, the user will move the mouse to the AutoFlea Market menu")
-    public void hoverTheCursorOver() {
+    public void hoverTheCursorOver() throws IOException{
         Actions actions = new Actions(BrowserDriver.getDriver());
         actions.moveToElement(homePageAuto).perform();
         assertTrue(homePageAuto.isDisplayed(), "Home page auto element is not displayed");
     }
 
     @Then("The user saw prices, cities, brands")
-    public void browseFields() {
+    public void browseFields()throws IOException {
         assertTrue(menuAutoElements.checkItemsAuto(
                 MenuItemAuto.CAR_REVIEWS,
                 MenuItemAuto.NEW_CAR,

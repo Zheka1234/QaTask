@@ -1,8 +1,11 @@
 package home7.pages;
 
+import home7.driver.BrowserDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
 import java.util.List;
 
 public class HistogramPage extends AuthorizationPage {
@@ -17,5 +20,25 @@ public class HistogramPage extends AuthorizationPage {
     @FindBy(xpath = "//*[@class='tooltip']")
     private WebElement tool;
 
+    public List<WebElement> getBars() {
+        log.info("getBars start");
+        return bars;
+    }
+
+    public WebElement getTooltip() {
+        log.info("getTooltip start");
+        return tool;
+    }
+
+    public boolean histogramClick() {
+        log.info("histogramClick start");
+        openHistogram.click();
+        log.info("histogramClick good");
+        return openHistogram.isDisplayed();
+    }
+
+    public HistogramPage() throws IOException {
+        PageFactory.initElements(BrowserDriver.getDriver(), this);
+    }
 
 }

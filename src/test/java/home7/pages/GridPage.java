@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
 
-public class GridPage extends AuthorizationPage {
+public class GridPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='app-title'][contains(text(),'Grid & chart')]")
     private WebElement openChat;

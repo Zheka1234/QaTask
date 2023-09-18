@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DeltixuatPage extends BasePage {
+import java.io.IOException;
+
+public class LoginPage extends AuthorizationPage {
 
     @FindBy(xpath = "//a[@href='/settings']")
     private WebElement settingButton;
@@ -24,7 +26,7 @@ public class DeltixuatPage extends BasePage {
         return settingButton.isDisplayed();
     }
 
-    public boolean checkMenuElements() {
+    public boolean checkMenuElements() throws IOException {
         log.info("checkMenuElements start");
         menuElements.checkItem(MenuItem.SUMMARY);
         menuElements.checkItem(MenuItem.GRID_AND_CHAT);
@@ -41,7 +43,7 @@ public class DeltixuatPage extends BasePage {
         return benchmarkSelection.isDisplayed();
     }
 
-    public DeltixuatPage() {
+    public LoginPage() throws IOException {
         PageFactory.initElements(BrowserDriver.getDriver(), this);
     }
 }

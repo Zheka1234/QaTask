@@ -1,42 +1,37 @@
 package home7.tests;
 
 import home7.driver.BrowserDriver;
-import home7.pages.DeltixuatPage;
+import home7.pages.LoginPage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Properties;
 
+import static home7.driver.BrowserDriver.getMyProperties;
 import static org.testng.Assert.assertTrue;
 
 public class CaseLoginTest {
 
-    DeltixuatPage deltixuatPage;
-
+    LoginPage loginPage;
 
     @BeforeMethod
-    public void openDeltixuat()  {
-        BrowserDriver.getDriver().get("https://app.tca.deltixuat.com");
-        deltixuatPage = new DeltixuatPage();
+    public void openDeltixuat() throws IOException {
+        BrowserDriver.getDriver().get(getMyProperties().getProperty("siteUrl"));
+        loginPage = new LoginPage();
+
     }
 
     @AfterMethod
     public void closeDeltixuat() {
         BrowserDriver.close();
     }
-
     @Test
-    public void loginTest() {
-        assertTrue(deltixuatPage.clickUser());
-        assertTrue(deltixuatPage.checkSetting());
-        assertTrue(deltixuatPage.checkBenchmarkSelection());
-        assertTrue(deltixuatPage.checkMenuElements());
-
-
+    public void loginTest() throws IOException {
+        assertTrue(loginPage.clickUser());
+        assertTrue(loginPage.checkSetting());
+        assertTrue(loginPage.checkBenchmarkSelection());
+        assertTrue(loginPage.checkMenuElements());
     }
 
 }

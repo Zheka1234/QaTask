@@ -3,6 +3,7 @@ package home5.tests;
 import home5.driver.Browser;
 import home5.pages.TvPages;
 import home5.utility.SaveScreenShots;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
@@ -16,6 +17,8 @@ import static org.testng.Assert.assertTrue;
 
 public class TvOnlinerTest {
 
+    private static Logger log = Logger.getLogger(TvOnlinerTest.class);
+
     TvPages tvHomePages;
 
     @BeforeMethod
@@ -26,6 +29,7 @@ public class TvOnlinerTest {
 
     @Test
     public void testLgLabelsOnThePage() throws InterruptedException, IOException {
+        log.info("testLgLabelsOnThePage start");
         tvHomePages.openTvPage();
         ((JavascriptExecutor) Browser.getDriver()).executeScript("window.scrollBy(0,700)");
         tvHomePages.openTvPageLg();
@@ -36,6 +40,7 @@ public class TvOnlinerTest {
         SaveScreenShots.saveScreenShot();
         for (WebElement element : elements) {
             String text = element.getText();
+            log.warn("The model does not match the filter Lg" + element);
             System.out.println(text);
             assertTrue(text.contains("LG"));
         }

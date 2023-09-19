@@ -1,6 +1,8 @@
 package home5.utility;
 
 import home5.driver.Browser;
+import home5.tests.TvOnlinerTest;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -12,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SaveScreenShots extends Browser {
+
+    private static Logger log = Logger.getLogger(TvOnlinerTest.class);
 
 
     public static void saveScreenShot() throws IOException {
@@ -30,6 +34,7 @@ public class SaveScreenShots extends Browser {
 
         byte[] scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         Files.write(new File("./test-output/screenshots/" + fileName).toPath(), scrFile, StandardOpenOption.CREATE);
+        log.error("No save screenshot" + scrFile + fileName);
     }
 }
 

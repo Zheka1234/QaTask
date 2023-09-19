@@ -1,6 +1,7 @@
 package home5.pages;
 
 import home5.driver.Browser;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,6 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class TvPages {
+
+    private static Logger log = Logger.getLogger(TvPages.class);
 
 
     @FindBy(xpath = "//a[@href='https://catalog.onliner.by/tv']")
@@ -23,10 +26,14 @@ public class TvPages {
     }
 
     public void openTvPage() {
+        log.info("openTvPage" + tvLink);
+
         tvLink.click();
     }
 
     public void openTvPageLg() {
+
+        log.error("No click Lg" + tvLg);
         tvLg.click();
     }
 

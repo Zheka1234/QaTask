@@ -31,16 +31,18 @@ public class TvOnlinerTest {
     public void testLgLabelsOnThePage() throws InterruptedException, IOException {
         log.info("testLgLabelsOnThePage start");
         tvHomePages.openTvPage();
+        log.debug("scroll window to menu");
         ((JavascriptExecutor) Browser.getDriver()).executeScript("window.scrollBy(0,700)");
-        tvHomePages.openTvPageLg();
+                tvHomePages.openTvPageLg();
         synchronized (Browser.getDriver()) {
             Browser.getDriver().wait(4000);
         }
         List<WebElement> elements = tvHomePages.getLgModelLabelElements();
+        log.info("check elements" + elements);
         SaveScreenShots.saveScreenShot();
         for (WebElement element : elements) {
             String text = element.getText();
-            log.warn("The model does not match the filter Lg" + element);
+            log.warn("The model does not match the filter Lg" + text);
             System.out.println(text);
             assertTrue(text.contains("LG"));
         }

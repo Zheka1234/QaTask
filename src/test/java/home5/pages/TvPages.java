@@ -26,14 +26,14 @@ public class TvPages {
     }
 
     public void openTvPage() {
-        log.info("openTvPage" + tvLink);
+        log.info("open tv page" + tvLink);
 
         tvLink.click();
     }
 
     public void openTvPageLg() {
 
-        log.error("No click Lg" + tvLg);
+        log.info("click Lg" + tvLg);
         tvLg.click();
     }
 
